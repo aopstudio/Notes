@@ -16,6 +16,7 @@ digraph g{
 }
 ```
 ![os](images/os.png)
+
 OS的作用：
 * 物理机层面（CPU Memory Devices）：分配资源
 * 虚拟机层面（Application）：控制程序
@@ -215,7 +216,7 @@ digraph states{
 ```
 ![process states](https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1474977550,2975918179&fm=26&gp=0.jpg)
 
-*为什么waiting之后不能直接running？*
+*为什么waiting之后不能直接running？*  
 如果有两条队列都能进入running状态，调度很麻烦。同时只有一条队列进入running队列也对所有进程公平。
 
 ### Process creation 进程创建
