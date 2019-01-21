@@ -162,3 +162,93 @@ I/O系统包含
 - 存储分配
 - 磁盘调度
 
+## Process & thread 1
+### 什么是进程 Process
+**Process——a program in execution** 一个执行过程中的程序
+* Program（executable）：磁盘上的passive实体
+* Process：active entity被激活的实体，包含
+    * 程序计数器
+    * 栈
+    * 堆
+    * 文本
+    * 数据
+#### 什么是程序 Program
+一个程序包含
+- Code
+- Data
+- DLLs 动态链接库
+- mapped files
+
+Running a program 运行一个程序
+* OS创建一个进程，并为它分配内存
+
+Process vs Program
+* 两个进程可能和同一个程序相关联
+- 两条单独执行的顺序
+- 文本部分相同，数据、堆、栈都不同
+
+### Process states 进程状态
+一个进程执行时，它会改变状态
+
+**基本状态**
+- running：指令正在执行
+- waiting：进程等待某个事件发生
+- ready：进程等待分配给CPU
+
+**扩展状态**
+- new：进程被创建
+- terminated：进程结束执行
+
+dot语言画进程状态图如下
+```
+digraph states{
+    new->ready[label=admitted]
+    ready->running[label="scheduler dispatch"]
+    running->terminated[label=exit]
+    {rank=same;new terminated}
+    {rank=same;ready running}
+    running->ready[label="interrupt"]
+    running->waiting[label="I/O or event wait"]
+    waiting->ready[label="I/O or event completion"]
+}
+```
+![process states](https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1474977550,2975918179&fm=26&gp=0.jpg)
+
+*为什么waiting之后不能直接running？*
+如果有两条队列都能进入running状态，调度很麻烦。同时只有一条队列进入running队列也对所有进程公平。
+
+### Process creation 进程创建
+四种典型事件
+- 系统初始化
+- 用户请求创建
+- 系统调用相应接口
+    * Unix:fork()
+    * Windows:CreateProcess()
+- 开启一个批处理任务
+
+### Process hierarchies 进程层次
+父进程可以创建子进程，子进程可以继续创建子进程，形成进程树
+
+### Process relationships 进程关系
+#### Resource sharing
+- 父子进程共享全部资源
+- 子进程分享父进程资源的子集
+- 父子进程不共享资源
+#### Execution
+- 父子进程同时执行
+- 父进程等子进程结束再执行
+#### Address space
+- 子进程复制了父进程的地址空间
+- 子进程有专门的程序加载地址空间
+#### Independent or cooperating
+
+### Process termination 进程结束
+- 正常退出（自愿）
+- Error exit（自愿）
+- Fatal error（强制） 致命错误
+- 被其他进程杀死
+
+**Exit 正常退出**
+**Abort放弃**
+
+
