@@ -15,6 +15,7 @@ digraph g{
     OS->Devices->OS
 }
 ```
+![os](images/os.png)
 OS的作用：
 * 物理机层面（CPU Memory Devices）：分配资源
 * 虚拟机层面（Application）：控制程序
@@ -200,7 +201,7 @@ Process vs Program
 - terminated：进程结束执行
 
 dot语言画进程状态图如下
-```
+```dot
 digraph states{
     new->ready[label=admitted]
     ready->running[label="scheduler dispatch"]
@@ -252,3 +253,114 @@ digraph states{
 **Abort放弃**
 
 
+## Process and threads 2
+### Data structure of a process
+#### Process control block(PCB)进程控制块
+和每个进程相关联的信息，包含：
+- Process state 进程状态
+- Program counter 程序计数器
+- CPU register 寄存器：为了能让CPU离开进程后回来还能执行
+- CPU scheduling information CPU调度信息
+- Memory-management information 内存管理信息
+- ~~Account information~~（本课程不学习）
+- ~~I/O status information~~（本课程不学习）
+
+### Organization model 进程组织模型
+进程被组织成不同的队列
+- Ready一条 **<font color=darkblue>Ready queue</font>**
+- New一条 **<font color=darkblue>Job queue</font>**
+- Waiting一条或多条 不同的设备可以放到不同的队列 **<font color=darkblue>Device queues</font>**
+
+### Process scheduling 进程调度
+进程被需要触发的事件驱动，从一条队列转移到另一条队列
+
+#### 调度类型
+* **<font color=red>Long-term scheduling(or job scheduling)</font> 长程调度**
+    **<font color=darkblue>从job queue中选一个到ready queue中</font>**
+    内存可用时,从磁盘中移出一个到内存
+    不太频繁，速度慢
+* **<font color=red>Short-term scheduling(or CPU scheduling)</font> 短程调度**
+    **<font color=darkblue>从ready queue中选一个到running</font>**
+    更加频繁，速度必须快
+* **<font color=red>Interrupt handling</font> 中断处理**
+    **<font color=darkblue>从waiting到ready</font>**
+* **<font color=red>Medium-term scheduling</font>**
+    CPU和内存资源管理的混合
+    **<font color=darkblue>swapping</font>**：一个进程需要长期等待时，把它先移动到磁盘，把其他进程移入内存
+
+### Scheduling actions
+当CPU从一个进程切换到另一个进程时，系统要保存旧进程的状态，加载新进程的状态。这个过程叫 **<font color=red>上下文切换 context switch</font>**
+
+### 线程 Threads
+在进程之间切换越快越好，而创建进程和进程通信工作量很大，所以产生了线程
+线程有
+* 独立的 <font color=darkblue>PC, Register, Stack pointer</font>
+* 共享的 <font color=darkblue>Code, Data, File</font>
+
+进程是资源的拥有者
+线程用来调度任务
+![thread](images/thread.png)
+
+#### 超线程和多核
+##### 超线程
+```dot
+digraph hyper_threading{
+    table [ shape = "plaintext", label = <
+        <table border="1" cellspacing="0">
+        <tr>
+        <td port="r1">Register</td>
+        <td port="r2">Register</td>
+        </tr>
+        <tr>
+        <td colspan="2">ALU</td>
+        </tr>
+        <tr>
+        <td colspan="2" port="cache">Cache</td>
+        </tr>
+        </table>
+        >]
+    mm [label="Main memory", shape="plaintext"]
+    lp1 [label="Logical processor", shape="plaintext"]
+    lp2 [label="Logical processor", shape="plaintext"]
+    table:cache->mm->table:cache
+    lp1->table:r1
+    lp2->table:r2
+}
+```
+![hyper-threading](images/hyper_threading.png)
+##### 多核
+```dot
+digraph multicore{
+    table [ shape = "plaintext", label = <
+        <table border="1" cellspacing="0">
+        <tr>
+        <td port="r1">Register</td>
+        <td port="r2">Register</td>
+        </tr>
+        <tr>
+        <td>ALU</td>
+        <td>ALU</td>
+        </tr>
+        <tr>
+        <td port="c1">Cache</td>
+        <td port="c2">Cache</td>
+        </tr>
+        </table>
+        >]
+    mm1 [label="Main memory", shape="plaintext"]
+    mm2 [label="Main memory", shape="plaintext"]
+    pp1 [label="Physical processor", shape="plaintext"]
+    pp2 [label="Physical processor", shape="plaintext"]
+    table:c1->mm1->table:c1
+    table:c2->mm2->table:c2
+    pp1->table:r1
+    pp2->table:r2
+}
+```
+![multicore](images/multicore.png)
+#### 两类线程
+- 用户线程
+    用户层级
+    所有线程在user space中完成
+- 内核线程
+    OS直接执行
