@@ -365,3 +365,131 @@ digraph multicore{
     所有线程在user space中完成
 - 内核线程
     OS直接执行
+
+## Process Synchronization 1
+* IPC(Interprocess communication)
+    协作的进程需要IPC
+
+### 三种IPC模型
+进程通信可以通过
+- **shared memory** 共享内存
+- **pipe** 管道
+- **message passing** 消息传递
+
+### Message passing
+- 建立一个communicate link(physical/logical)
+- 通过send/receive交换
+
+#### 直接通信，对称寻址 Direct communication-symmetric addressing
+* 进程必须互相知道对方名字
+    - send(P,message)
+    - receive(Q,message)
+* 自动建立了link **两个进程间只有一条，一条链路只有两个进程**
+
+#### 直接通信，非对称寻址
+* 发送时指明了名字，接收只有id
+    - send(P,message)
+    - receive(id,message)
+例如：共享打印机
+
+直接通信的缺点：必须知道对方的名字，局限了模块化
+
+#### 间接通信
+* 消息从中介取，往中介发 mailbox or ports
+    - send(A,message)
+    - receive(A,message)
+
+每个mailbox都有独立id  
+**一条链路连接多个进程**
+
+### IPC synchronization
+- **<font color=red>Blocking send</font>**：直到上一个消息被接收时才会发下一个消息
+- **<font color=red>Non-blocking send</font>**：随时发
+- **<font color=red>Blocking receive</font>**：一个消息来的时候receiver才工作
+- **<font color=red>Non-blocking receive</font>**：随时取
+
+Non-blocking和blocking receive是最常见的
+
+### IPC buffering
+link的消息队列容量
+- Zero capacity 队列长度=0
+- Bounded capacity 队列长度=n
+- Unbounded capacity 队列长度=$\infty$
+
+### Critical-Section Problem 临界区问题
+对于共享数据的并行访问可能导致数据的不一致
+#### <font color=darkblue>Race condition</font> 竞争条件
+多个进程同时访问操作文件，最终结果取决于最后执行的指令  
+为了避免竞争条件，并行的进程必须是<font color=red>mutual exclusion</font> **互斥的**
+
+**互斥**
+- 如果一个进程正在使用一个共享文件或变量，其他进程不能做同样的事
+
+#### <font color=darkblue>The critical-section problem</font>
+每个进程拥有的操作共享数据的代码称为<font color=red>critical section</font> **临界区**。要保证当一个进程执行时它的临界区代码时，其他进程不能执行临界区代码
+
+解决方案：
+**<font color=darkblue>在执行之前加点条件，判断能否执行，执行完毕后解锁</font>**
+
+```c
+do{
+    entry section   //执行前判断
+        crical section
+    exit section    //执行完毕后解锁
+        reminder section
+}
+```
+
+解决临界区问题需要满足
+- **<font color=darkblue>Mutual Exclusion</font> 互斥**
+- **<font color=darkblue>Progress</font> 前进原则**
+    如果没有临界区代码在执行，有一个进程想进入临界区是，应当允许
+- **<font color=darkblue>Bounded wait</font> 有限等待** 
+    想进入临界区的在有限时间内总能进入
+
+#### 例 火车问题
+##### 算法1 交替进入
+```c
+int turn;
+turn=i  //Pi可以进入
+```
+Pi
+```c
+do {
+    while(turn!=i);
+    /* critical section */
+    turn=j;
+    /* remainder section */
+} while(1);
+```
+**满足互斥，但不满足前进原则（只有一辆车运行的情况下）**
+
+##### 算法2 flag each process 给每个进程都标记
+```c
+boolean flag[2];
+flag[i]=true;
+```
+Pi
+```c
+do {
+    flag[i]=true;
+    while(flag[j]); //空循环等待j
+    /* critical sectioon */
+    flag[i]=false;
+    /* remainder */
+} while(1);
+```
+**如果两个同时刻到，那么都进不去，不满足Bounded waiting**
+
+##### 算法3 1和2的组合
+```c
+do {
+    flag[i]=true;
+    turn=j; //先把机会让给另外一个
+    while(flag[j] && turn==j);  //如果另外一个也到了，就空循环等待
+    /* critical section */
+    flag[i]=false;
+    /* remainder section */
+} while(1);
+```
+**三个要求都满足**
