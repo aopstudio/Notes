@@ -5,16 +5,7 @@
 * OS是个软件
 ——一个虚拟化计算机的程序
 
-```dot
-digraph g{
-    App[label="Application"]
-    OS[label="Operating System"]
-    App->OS->App
-    OS->CPU->OS
-    OS->Memory->OS
-    OS->Devices->OS
-}
-```
+
 ![os](images/os.png)
 
 OS的作用：
@@ -493,3 +484,169 @@ do {
 } while(1);
 ```
 **三个要求都满足**
+
+## Process Synchronization 2
+### Synchronization tools for IPC
+* Synchronization hardware
+* Semaphores
+* Critical Regions
+* Monitors
+
+### Synchronization hardware 硬件同步
+很多系统提供了硬件对于临界区代码的支持
+- 单处理器可以禁止中断，使当前运行代码不会被抢占
+- 在多处理器上上述方案效率太低
+
+现代计算机提供了特别的 **<font color=darkblue>原子的(atomic)</font>** 硬件指令
+- 检查和修改字的内容
+- 或交换两个字的内容
+
+#### TestAndSet Instruction 检查和修改指令 <font color=darkblue>自旋锁</font>
+方法：
+```cpp
+boolean TestAndSet(boolean *target) {
+    boolean rv=*target;
+    *target=true;
+    return rv;
+}
+```
+初始化：
+```cpp
+boolean lock=false;
+```
+执行时：
+```cpp
+do{
+    while(TestAndSet(&lock));
+    //critical section
+    lock=false;
+    //remainder section
+}
+```
+
+#### Swap Instruction
+操作两个数据，与指令TestAndSet一样原子执行
+```cpp
+void Swap(boolean *a,boolean *b) {
+    boolean temp=*a;
+    *a=*b;
+    *b=temp;
+}
+```
+初始化：
+```cpp
+boolean lock=false;
+```
+执行时：
+```cpp
+do {
+    key=true;
+    while(key==true)
+        Swap(&lock, &key);
+    //critical section
+    lock=false;
+    //remainder
+} 
+```
+### Semaphores 信号量
+Dijkstra提出
+**信号量 一个整形变量，只能通过两个标准原子操作：**
+* <font color=red>wait()</font>
+* <font color=red>signal()</font>
+
+wait(s):
+```c
+while(s<=0)
+;   //no-operation
+s--;
+```
+
+signal(s):
+```c
+s++
+```
+
+在wait()和signal()操作中，对信号量的修改必须是原子的，即当一个进程修改信号量值时，不能有其他进程同时修改同一信号的值
+
+初始化：
+```c
+int matex=1;
+```
+Critical section of n processes
+```c
+do {
+    wait(mutex);
+    //critical section
+    signal(mutex);
+    //remainder section
+} while(1);
+```
+
+#### 两种类型的信号量
+* **计数信号量**的值域不受限制，用来表示可用资源的数量
+* **二进制信号量**的值只能为0或1
+
+#### 信号量实现的分析
+主要缺点是 **<font color=darkblue>忙等待(busy waiting)</font>**
+##### 忙等待
+当一个进程位于其临界区内时，其他想进入临界区的进程必须连续循环等待，浪费了CPU时钟。也称为自旋锁。  
+##### 解决方法
+为了克服忙等待，可以使用阻塞并放入等待队列的操作。通过wakeup()来重新执行
+
+定义一个新结构
+```c
+typedef struct {
+    int value;
+    struct process *List;
+} semaphore;
+```
+- Block operation: <font color=red>block()</font>
+- Wakeup operation: <font color=red>wakeup()</font>
+
+新的信号量操作定义
+```c
+wait(semaphore *S){
+    S.value--;
+    if(S.value<0) {
+        block();    //add this process to S.List
+    }
+}
+
+signal(semaphore *S) {
+    S.value++;
+    if(S.value<=0) {
+        wakeup(P);  //remove a process P from S.List
+    }
+}
+```
+Bounded-Buffer Problem 可用计数信号量来解决
+
+#### Deadlock and Starvation 死锁与饥饿
+* Deadlock: 两个或多个进程无限地等待一个事件
+* Starvation: 无限期阻塞
+
+### Critical Regions 临界域
+一种高层同步结构
+
+### Monitor 管程
+另一种高层同步结构
+
+管程类型提供了一组由程序员定义的、在管程内互斥的操作
+
+管程类型包含
+```c
+monitor monitor-name {
+    shared variable declarations
+    procedure body P1() {   }
+    procedure body Pn() {   }
+    {initialization code}
+}
+```
+
+同一时刻管程内只有一个进程在活动，因此不需显式地编写同步代码
+
+为了让进程在管程内等待，必须声明一些condition类型的变量
+
+两种操作
+- x.wait() 进程挂起
+- x.signal() 被挂起的进程重新活动
