@@ -631,9 +631,28 @@ Bounded-Buffer Problem 可用计数信号量来解决
 ### Monitor 管程
 另一种高层同步结构
 
-管程类型提供了一组由程序员定义的、在管程内互斥的操作
+比信号量更高的抽象。或者说并没有这种实体存在于系统或编程语言中,更多的是一种机制，一种解决方法，但是编程语言和操作系统都提供了实现管程的重要部件**条件变量**
 
-管程类型包含
+管程就是管理一组共享变量的程序。主要有一下几部分组成
+```c
+mutex // 一个互斥锁，任何线程访问都必须先获得mutex
+
+condition //一个或者多个，每个条件变量都包含一个等待队列
+
+balabala //共享变量及其访问方法
+```
+#### 特点
+
+* 采用面向对象方法，简化线程同步
+* 同一时刻仅有一个线程在管程中工作
+* 可临时放弃管程的访问权，叫醒一个在等待队列中的线程，这是其他方法都没有的(原子锁和信号量一旦进入临界区就必须执行完临界区代码才能退出)，而实现这一点采用的就是**条件变量**
+
+#### 类型
+* Hansan管程
+* Hoare管程
+
+#### 实现
+管程类型提供了一组由程序员定义的、在管程内互斥的操作
 ```c
 monitor monitor-name {
     shared variable declarations
@@ -642,11 +661,66 @@ monitor monitor-name {
     {initialization code}
 }
 ```
-
 同一时刻管程内只有一个进程在活动，因此不需显式地编写同步代码
 
-为了让进程在管程内等待，必须声明一些condition类型的变量
+#### 条件变量
+为了让进程在管程内等待，必须声明一些condition类型的变量，即条件变量
 
-两种操作
+条件变量两种操作
 - x.wait() 进程挂起
 - x.signal() 被挂起的进程重新活动
+
+![condition](https://img-blog.csdn.net/20180417230502989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRHlsYW5fRnJhbms=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+##### 注意
+这里的wait和P操作是不一样的，最大的不同就是他一定会将自己阻塞同时释放锁。而signal如果没有等待线程相当于一个空操作。而且numWaiting 不可能为负数
+
+## Process Synchronization 3
+**一些经典的同步问题**
+
+### 1. 读写者问题
+#### 前提条件
+多个读者可以并行，写者不能并行。  
+即可以同时读，不能同时写，不能在读的同时写，不能在写的同时读。
+
+#### 两种情况
+##### 1. 读者优先
+* 没有读者会因为有一个写者在等待而去等待其他读者的完成
+* 写者执行写操作前，应该让所有读者和写者退出
+* 除非有一个写者在访问临界区，其他情况下，读者不应该等待
+
+##### 2. 写者优先
+如果一个写者等待访问对象，那么不会有新读者开始读操作
+
+#### 读者优先的实现
+初始化变量
+```c
+BINARY_SEMAPHORE wrt=1;
+BINARY_SEMAPHORE mutex=1;
+int readcount=0;
+```
+
+Reader:
+```c
+do {
+    wait(mutex);    //Allow 1 reader in entry
+    readcount=readcount+1;
+    if(readcount==1)
+        wait(wrt);  //1st reader locks writer
+    signal(mutex);
+        //reading operation
+    wait(mutex);
+    readcount=readcount-1;
+    if(readcount==0)
+        signal(wrt);    //last reader frees writer
+    signal(mutex);
+}
+```
+
+Writer:
+```c
+do {
+    wait(wrt);
+        //writing operation
+    signal(wrt);
+}
+```
