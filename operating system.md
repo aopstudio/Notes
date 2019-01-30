@@ -439,6 +439,9 @@ do{
     想进入临界区的在有限时间内总能进入
 
 #### 例 火车问题
+##### 前提
+有两列相向而行的火车需要在某个地点占用同一段铁轨，如何保证两车进入不会相撞，且两车都能正常运行
+
 ##### 算法1 交替进入
 ```c
 int turn;
@@ -679,8 +682,9 @@ monitor monitor-name {
 
 ### 1. 读写者问题
 #### 前提条件
-多个读者可以并行，写者不能并行。  
-即可以同时读，不能同时写，不能在读的同时写，不能在写的同时读。
+1. 写者、读者互斥访问文件资源。
+2. 多个读者可以同时访问文件资源。
+3. 只允许一个写者访问文件资源。
 
 #### 两种情况
 ##### 1. 读者优先
@@ -722,5 +726,54 @@ do {
     wait(wrt);
         //writing operation
     signal(wrt);
+}
+```
+
+#### 写者优先的实现
+初始化变量
+```c
+BINARY_SEMAPHORE read=1;    //使有写者进行操作时读者等待
+BINARY_SEMAPHORE file=1;    //使文件操作互斥
+BINARY_SEMAPHORE mutex1=1;  //使改变readcount的方法互斥
+BINARY_SEMAPHORE mutex2=1;  //使改变writecount的方法互斥
+int readcount=0;
+int writecount=0;
+```
+
+Reader:
+```c
+do {
+    wait(read); //等待直至读者队列没有阻塞，即全部写者都退出，同时自身进入后再次上锁，使后来的读者等待，因为接下来要进行一系列互斥的操作
+    wait(mutex1);
+    readcount++;
+    if(readcount==1)    //第一个读者进入
+        wait(file);     //后来的写者无法操作文件，但对后来的读者的文件操作不造成影响
+    signal(mutex1);
+    signal(read);   //释放
+        //read operation
+    wait(mutex1);
+    readcount--;
+    if(readcount==0)
+        signal(file);
+    signal(mutex1);
+}
+```
+
+Writer:
+```c
+do {
+    wait(mutex2);
+    writecount++;
+    if(writecount==1)   //第一个写者进入
+        wait(read); //阻塞读者队列
+    signal(mutex2);
+    wait(file);
+        //write operation
+    signal(file);
+    wait(mutex2);
+    writecount--;
+    if(writecount==0)   //最后一个写者退出
+        signal(read);   //释放读者队列
+    signal(mutex2);
 }
 ```
