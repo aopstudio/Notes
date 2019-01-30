@@ -777,3 +777,48 @@ do {
     signal(mutex2);
 }
 ```
+
+### 哲学家进餐问题
+#### 前提条件
+5个哲学家围着桌子吃饭，筷子只有5枝，分别在每个哲学家的左手边和右手边。哲学家必须得到两只筷子才能吃饭，要使每个哲学家都能吃到饭，该如何调度
+
+#### 解决方法
+只有左右两只筷子都可用时，才允许一个哲学家拿起它们
+
+#### 管程实现
+```java
+void philosopher(int i) {   //主方法
+    while(true) {
+        thinking();
+        dp.pickup(i);
+        eating();
+        dp.putdown(i);
+    }
+}
+
+monitor dp {
+    enum{thinking,hungry,eating} state[5];
+    condition self[5];
+    void pickup(int i) {
+        state[i]=hungry;    //设置本人为饥饿状态
+        test[i];    //测试左右两个人是否在吃
+        if(state[i]!=eating)    //如果需要等待
+            self[i].wait();     //进入等待，在pickup方法处阻塞
+    }
+    void putdown(int i) {
+        state[i]=thinking;
+        test((i+4)%5);      
+        test((i+1)%5);  //本人放下筷子后，状态发生了变化，测试左右两个是否等待吃，如有，则给他们开始吃的机会（但也不一定能马上开始吃）
+    }
+    void test(int i) {
+        if((state[(i+4)%5]!=eating) && (state[i]==hungry) && (state[(i+1)%5]!=eating)) {    //如果左右两个人并没有在吃，而且自己处于饥饿状态
+            state[i]=eating;    //设置状态为eating
+            self[i].signal();   //释放pickup方法，在philosopher方法中下一步将执行eating操作
+        }
+    }
+    initializationCode() {
+        for(int i=0;i<5;i++)
+            state[i]=thinking;
+    }
+}
+```
