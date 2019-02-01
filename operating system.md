@@ -869,3 +869,96 @@ consumer ()
     }
 }
 ```
+
+## CPU Scheduling 1
+![process states](https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1474977550,2975918179&fm=26&gp=0.jpg)
+
+### CPU调度解决的问题
+何时调度
+
+### 类型
+* 非抢占式 nonpreemptive
+    1. 从running到waiting
+    2. Terminates
+* 抢占式
+    1. 从waiting到ready
+    2. 从running到ready
+
+### 如何调度
+1. 切换上下文
+2. 转换为use mode
+3. 跳转到用户程序中的适当位置来重启程序
+
+### Scheduling criteria 性能指标
+* Max CPU utilization —— 让CPU越忙越好
+* Max Throughput 单位时间内能完成的进程个数越多越好
+* Min Turnround time 周转时间越短越好
+* Min Waiting time 等待时间
+* Min Response time 响应时间指从请求提交到第一个相应产生，并非输出产生
+
+不同种类OS有不同的目标
+
+### 重点讨论
+批处理系统的调度算法
+
+主要有4种
+* First-Come, First-Served <font color=darkblue>(FCFS) </font>
+* Shortest Job First <font color=darkblue>(SJF) </font>
+* Shortest Remaining Time First <font color=darkblue>(SRTF)</font>
+* Three-Level Scheduling
+
+主要的时间概念
+* 周转周期=结束时间-到达时间
+* 带权周转时间=周转时间/服务时间
+
+例子
+![situation](https://img-blog.csdn.net/20180121005045274?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+### FCFS
+FCFS最简单，是非抢占式的
+
+进程按照请求CPU的顺序排序
+
+上述例子解决图
+![graph1](https://img-blog.csdn.net/20180121005129300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+表格
+![sheet1](https://img-blog.csdn.net/20180121005206006?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+### SJF
+如果运行时间事先已知，可以每次挑选最短的任务以避免convoy effect(护航效应，即小进程等待大进程释放)
+
+也是非抢占式的。
+
+例子图
+![graph2](https://img-blog.csdn.net/20180121005249291?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+例子中A运行结束时间为3，这时只有B进程等待。所以A运行结束后直接运行B。B结束后时间点到9，CDE都在等待。这个时候就选择服务时间最少的E，然后是较少的C，最后是D。
+以表格的形式展示：
+![sheet2](https://img-blog.csdn.net/20180121005319025?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+#### SJF的优点
+可以证明**SJF是最优的**
+避免了护航效应（convoy effect）
+#### SJF的缺点
+难以得知下次CPU请求的长度，只能预测。一般通过数学期望 $t_{n+1}=at_{n}+(1-a)t_{n}$ 来确定
+
+### SRTF
+SRTF是抢占式的，有时也被称为抢占式的SJF
+
+* 当前剩余运行时间最短的进程被挑出来
+* 如果新到达进程的CPU Burst time比当前执行进程的要短，则抢占
+
+例子图
+![graph3](https://img-blog.csdn.net/20180121005401910?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+1. A先运行至2，B到达等待。
+2. A运行到3结束，B开始运行。
+3. B开始运行，运行到4时，C进程到达，且C只需要4，此时B还需要5。所以先运行C，B继续等待。
+4. C运行时间点到达6时，D到达，D需要5，进入等待，排在B后。
+5. C运行结束，此时时间点是8，E到达，运行时间只要2，小于等待的BD，直接运行。
+6. C运行结束，B开始运行。
+7. B运行结束，D开始运行。
+
+表格形式：
+![sheet3](https://img-blog.csdn.net/20180121005423134?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+### Three-Level Scheduling 三级调度
+![tls](http://assets.processon.com/chart_image/5c53a8f1e4b056ae2a03252d.png)
