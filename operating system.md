@@ -394,10 +394,10 @@ digraph multicore{
 **一条链路连接多个进程**
 
 ### IPC synchronization
-- **<font color=red>Blocking send</font>**：直到上一个消息被接收时才会发下一个消息
-- **<font color=red>Non-blocking send</font>**：随时发
-- **<font color=red>Blocking receive</font>**：一个消息来的时候receiver才工作
-- **<font color=red>Non-blocking receive</font>**：随时取
+- **<font color=red>Blocking send </font>**：直到上一个消息被接收时才会发下一个消息
+- **<font color=red>Non-blocking send </font>**：随时发
+- **<font color=red>Blocking receive </font>**：一个消息来的时候receiver才工作
+- **<font color=red>Non-blocking receive </font>**：随时取
 
 Non-blocking和blocking receive是最常见的
 
@@ -411,13 +411,13 @@ link的消息队列容量
 对于共享数据的并行访问可能导致数据的不一致
 #### <font color=darkblue>Race condition</font> 竞争条件
 多个进程同时访问操作文件，最终结果取决于最后执行的指令  
-为了避免竞争条件，并行的进程必须是<font color=red>mutual exclusion</font> **互斥的**
+为了避免竞争条件，并行的进程必须是 <font color=red>mutual exclusion </font> **互斥的**
 
 **互斥**
 - 如果一个进程正在使用一个共享文件或变量，其他进程不能做同样的事
 
 #### <font color=darkblue>The critical-section problem</font>
-每个进程拥有的操作共享数据的代码称为<font color=red>critical section</font> **临界区**。要保证当一个进程执行时它的临界区代码时，其他进程不能执行临界区代码
+每个进程拥有的操作共享数据的代码称为 <font color=red>critical section </font> **临界区**。要保证当一个进程执行时它的临界区代码时，其他进程不能执行临界区代码
 
 解决方案：
 **<font color=darkblue>在执行之前加点条件，判断能否执行，执行完毕后解锁</font>**
@@ -432,10 +432,10 @@ do{
 ```
 
 解决临界区问题需要满足
-- **<font color=darkblue>Mutual Exclusion</font> 互斥**
-- **<font color=darkblue>Progress</font> 前进原则**
+- **<font color=darkblue>Mutual Exclusion </font> 互斥**
+- **<font color=darkblue>Progress </font> 前进原则**
     如果没有临界区代码在执行，有一个进程想进入临界区是，应当允许
-- **<font color=darkblue>Bounded wait</font> 有限等待** 
+- **<font color=darkblue>Bounded wait </font> 有限等待** 
     想进入临界区的在有限时间内总能进入
 
 #### 例 火车问题
@@ -500,11 +500,11 @@ do {
 - 单处理器可以禁止中断，使当前运行代码不会被抢占
 - 在多处理器上上述方案效率太低
 
-现代计算机提供了特别的 **<font color=darkblue>原子的(atomic)</font>** 硬件指令
+现代计算机提供了特别的 **<font color=darkblue>原子的(atomic) </font>** 硬件指令
 - 检查和修改字的内容
 - 或交换两个字的内容
 
-#### TestAndSet Instruction 检查和修改指令 <font color=darkblue>自旋锁</font>
+#### TestAndSet Instruction 检查和修改指令 <font color=darkblue>自旋锁 </font>
 方法：
 ```cpp
 boolean TestAndSet(boolean *target) {
@@ -590,7 +590,7 @@ do {
 * **二进制信号量**的值只能为0或1
 
 #### 信号量实现的分析
-主要缺点是 **<font color=darkblue>忙等待(busy waiting)</font>**
+主要缺点是 **<font color=darkblue>忙等待(busy waiting) </font>**
 ##### 忙等待
 当一个进程位于其临界区内时，其他想进入临界区的进程必须连续循环等待，浪费了CPU时钟。也称为自旋锁。  
 ##### 解决方法
@@ -603,8 +603,8 @@ typedef struct {
     struct process *List;
 } semaphore;
 ```
-- Block operation: <font color=red>block()</font>
-- Wakeup operation: <font color=red>wakeup()</font>
+- Block operation: <font color=red>block() </font>
+- Wakeup operation: <font color=red>wakeup() </font>
 
 新的信号量操作定义
 ```c
@@ -962,3 +962,80 @@ SRTF是抢占式的，有时也被称为抢占式的SJF
 
 ### Three-Level Scheduling 三级调度
 ![tls](http://assets.processon.com/chart_image/5c53a8f1e4b056ae2a03252d.png)
+
+## CPU Scheduling 2
+重点讨论
+**Scheduling algorithms for Interactive Systems**
+
+算法
+* Priority Scheduling
+* Round-Robin Scheduling
+
+策略
+* Multilevel Queues Scheduling
+* Multilevel Feedback Queues Scheduling
+
+### Priority Scheduling 优先级调度
+可以是抢占式的，也可以是非抢占式的
+
+优先级最高的进程被选出来运行
+
+* 最大的问题：**<font color=darkblue>无限等待 starvation</font>**
+优先级低的可能永远无法运行
+解决方法：老化
+    每执行一个周期就把当前进程优先级降一下
+
+### Round Robin scheduling(RR) 轮询调度
+先给定时间片（time quantum）的大小
+* Case 1: CPU burst <= one time quantum
+    执行完就退出执行其他任务
+* Case 2: CPU burst > one time quantum
+    执行不完将该任务放到队尾
+
+RR比SJF的平均周转时间长，但有更好的response time
+
+假设ready queue的时间片为q  
+    q太大——FCFS
+    q太小——频繁切换，增加了开销
+
+### Multilevel Queue scheduling
+进程分组，不同组队列不同优先级，不同队列中算法不同
+### Multilevel Feedback Queue
+进程可以根据反馈情况在不同组队列间切换位置
+
+### Evaluation
+几种评估模型
+* Deterministic modeling
+* Queuing models
+* Simulations
+* Implementation
+
+#### Deterministic modeling 确定性建模
+在确定的场景中去评价
+
+比如 确定输入值，评价平均等待时间
+
+优点：  
+快、简单  
+可以给出具体数值  
+通常用来举例
+
+缺点：
+要有明确输入
+
+#### Queuing models
+知道到达速率和服务速率就可以比较其他指标
+
+例  
+n: 平均队列长度     w: 平均等待时间     λ: 平均到达新进程速率  
+n=w*λ
+
+优点：对于比较调度算法很有用
+
+缺点：难以理解
+
+#### Simulation 仿真
+真实去跑
+
+Useful but expensive
+
