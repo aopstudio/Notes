@@ -1039,3 +1039,80 @@ n=w*λ
 
 Useful but expensive
 
+## Deadlock 1
+### 前提条件
+R1,R2,...,Rm表示不同的资源类型  
+每个Ri有Wi个实例  
+每个进程使用资源时，先request，再use，再release
+
+### 一些基本事实
+
+* 同一时间一种资源只能由一个进程使用（**<font color=darkblue>互斥使用</font>**）
+* 同一时间一个进程可能需要访问多种资源
+* 有一些资源不能被抢占
+
+这就导致了一些进程的阻塞
+
+### 死锁的必要条件
+- **<font color=darkblue>Mutual exclusion 互斥访问</font>**
+- **<font color=darkblue>Hold and wait 占有和等待</font>**
+- **<font color=darkblue>No preemption 非抢占</font>**
+- **<font color=darkblue>Circular wait 循环等待</font>**
+
+### 资源分配图 Resource-Allocation Graph
+* 一组节点 V
+    * P 进程集合
+    * R 资源类型集合
+* 一组边 E
+    * 请求边 request edge P到R
+    * 分配边 assignment edge R到P
+
+![资源分配图](https://img-blog.csdn.net/20150512110710345)
+
+#### 从资源分配图上找是否会有死锁
+无环一定没有死锁，有环不一定有死锁  
+**<font color=darkblue>如果有环，且环上有资源只有一个实例，则必有死锁；有多个实例，可能有死锁</font>**
+
+### 处理死锁的方法
+* 忽略
+* 预防
+* 避免
+* 探测并恢复
+
+#### 忽略
+The Ostrich algorithm 鸵鸟算法
+#### 预防
+1. 打破互斥
+    不是所有的资源都行
+2. 打破Hold and wait
+    * 在运行前把所有所需资源拿来（不容易）
+    * 请求资源时把占有的资源都释放（很好）
+3. 打破非抢占
+    不可能
+4. 打破循环等待
+    和hold and wait类似
+    **<font color=darkblue>有序的</font>** 资源访问
+
+#### 避免
+判断请求在未来是否出现死锁
+动态检验
+##### Sage sequence
+指一个进程序列{P1，…，Pn}是安全的，即对于每一个进程Pi(1≤i≤n），它以后尚需要的资源量不超过系统当前剩余资源量与所有进程Pj (j < i )当前占有资源量之和
+##### Safe State
+系统给进程按一定顺序分配资源，不会有死锁  
+System is in safe state if there exists a <font color=darkblue>safe sequence</font> of all processes
+##### Basic facts
+* 如果一个系统在安全状态，不会有死锁
+* 如果一个系统在不安全状态，可能有死锁
+##### Deadlock Avoidance Algorithms
+* Resource allocation graph 每个资源一个实例
+* Banker's algorithm 每个资源多个实例
+###### Resource allocation graph algorithm
+一种新的边 claim edge -----> 代表 **<font color=darkblue>未来可能需要的资源</font>**
+
+claim edge 变成 assignment edge后，图中不能有环
+###### Banker's Algorithm 银行家算法
+* 每个新进程必须声明它所需每种资源的最大实例数
+* 进程请求时，系统必须确认是否分配资源会让系统不安全
+* 当一个进程得到所有所需资源后，它必须在有限时间内归还
+
