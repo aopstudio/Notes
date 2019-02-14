@@ -1116,3 +1116,71 @@ claim edge 变成 assignment edge后，图中不能有环
 * 进程请求时，系统必须确认是否分配资源会让系统不安全
 * 当一个进程得到所有所需资源后，它必须在有限时间内归还
 
+例子：
+![banker](https://img-blog.csdn.net/20180508210408944)
+问：
+1. 该状态是否安全？
+2. 若进程P2提出请求Request（1，2，2，2）后，系统能否将资源分配给它？
+
+答：
+1. 利用安全性算法对上面的状态进行分析（见下表），找到了一个安全序列{P0,P3,P4,P1,P2}，故系统是安全的。
+![answer](https://img-blog.csdn.net/20180508210518867)
+2. P2发出请求向量Request(1,2,2,2),系统按银行家算法进行检查：
+    1. Request2(1,2,2,2)<=Need2(2,3,5,6)
+    2. Request2(1,2,2,2)<=Available(1,6,2,2)
+    2. 系统先假定可为P2分配资源，并修改Available，Allocation2和Need2向量：
+    Available=(0,4,0,0)
+    Allocation2=(2,5,7,6)
+    Need2=(1,1,3,4)
+    此时再进行安全性检查，发现	Available=(0,4,0,0) 不能满足任何一个进程，所以判定系统进入不安全状态，即不能分配给P2相应的Request(1,2,2,2)。
+
+## Deadlock 2
+### Detection and recovery
+* Detection algorithm
+* Recovery scheme
+
+### Detection
+#### 每种资源类型只有单个实例
+##### Wait-for graph 等待图
+只有进程，每条边代表一个进程Pi等待另一个进程Pj释放一个Pi所需的资源
+
+等待图有环就代表有死锁
+```dot
+digraph wait {
+    node [shape=circle]
+    Pi->Pj [label=x]
+    Pj->Pk [label=y]
+    Pk->Pi [label=z]
+    {rank=same; Pj,Pk}
+}
+```
+#### 每种资源类型有多个实例
+算法使用了一些随时间变化的数据结构，和银行家算法类型
+- Availabel: 长度为m的向量，表示各种进程的可用实例
+- Allocation: $n \times m$矩阵，表示当前各进程的资源分配情况
+- Request: $n \times m$矩阵，表示当各进程的资源请求情况
+
+和银行家算法类似
+
+#### 何时调用检测算法
+* 死锁发生频率是多少
+* 死锁发生时，有多少进程会受影响
+
+### Recovery
+#### Process Termination 进程终止
+* 终止所有死锁进程
+* 一次只终止一个进程，知道取消死锁循环为止
+
+#### Resource Premmption 资源抢占
+从进程中抢占资源给其他进程使用
+
+三个问题
+* 选择被抢的对象：占用资源最少的进程
+* 回滚：回到安全状态
+* 饥饿：一个进程可能一直被抢
+
+### Combine
+将三种基本方法组合起来使用
+- Prevention
+- Avoidance
+- Detection
