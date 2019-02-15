@@ -1184,3 +1184,122 @@ digraph wait {
 - Prevention
 - Avoidance
 - Detection
+
+## Storage management 1
+### Storage Structure
+Von Numann theory  
+有工作内存的计算机
+#### Main Point
+数字计算机要以二进制计数  
+根据在程序中预先写好的指令顺序执行
+
+### 基于冯诺依曼体系计算机的特征
+- Input
+- Store
+- Calculate
+- Control
+- Output
+
+### 冯诺依曼架构指令运行过程
+1. 从内存取指令，存到寄存器
+2. 解析指令，从内存取数据，放到寄存器
+3. 执行特定指令，把结果存到内存
+
+### 存储类型
+* Main memory 主存
+* Secondary storage 辅存
+
+### Memory management
+#### 三种链接方式
+- <font color=darkblue>Static linking</font> 在磁盘中链接好
+- <font color=darkblue>Load-time dynamic linking</font> 装入内存时链接
+- <font color=darkblue>Run-time dynamic linking</font> 需要运行时链接
+
+#### 三种加载模式
+- <font color=darkblue>Absolute loading</font> 每次相同位置
+- <font color=darkblue>Relocation loading</font> 每次不同位置
+- <font color=darkblue>Dynamic run-time loading</font> 放进去以后还能挪
+
+#### 不同的地址表示
+* <font color=darkblue>Logical address</font> **逻辑地址** CPU生成 也叫Virtual address
+* <font color=darkblue>Physical address</font> **物理地址** 实际在内存中的地址
+
+#### Address mapping 地址映射
+**<font color=darkblue>Memory management unit(MMU)</font>**  
+用来将逻辑地址映射为物理地址的硬件
+
+#### Management
+OS中用来管理内存的步伐叫 **<font color=darkblue>memory manager</font>**
+
+职责：
+* Keep track of the using of memory
+* 分配和取消分配内存给进程
+* 当内存不够用时，管理内存和硬盘的swapping
+
+#### Memory managemant schemes
+```dot
+graph mmc {
+    
+    node [shape="box"]
+    a [label="Memory management\ntechniques"];
+    b [label="Contiguous \n allocation"]
+    c [label="Non-continguous \n allocation"]
+    d [label="Single \n partition \n allocation"]
+    e [label="Multiple \n partition \n allocation"]
+    f [label="Paging"]
+    g [label="Segmentation"]
+    h [label="Fixed partition"]
+    i [label="Variable partition"]
+
+    a--{b c}
+    b--{d e}
+    e--{h i}
+    c--{f g}
+}
+```
+
+#### Contiguous memory allocation 连续内存分配
+每个进程都完整地、连续地放到内存空间
+
+##### Single partition allocation 单分区
+* 内存分为两个区，一个给OS，一个给用户进程
+* Single user, single task 单用户，单任务的情况下使用
+* OS由<font color=darkblue>Base regisrer, Limit register</font>保护
+
+##### Multiple partition allocation 多分区
+把内存分成多个分区，每个分区大小可定可变  
+每个分区包含恰好一个进程
+
+###### Fixed partition 固定分区
+分区大小固定  
+分区内部剩余内存空置会造成浪费
+
+###### Variable partitions 可变分区
+Hole:空闲区域  
+当进程到达时，从一个足够大的hole中分内存给它  
+三种分配策略
+* First-fit：分配按地址顺序的第一个可用的hole
+* Best-fit：放到最小的足够大的hole
+* Worst-fit：放到最大的hole
+
+<font color="darkblue">First-fit通常比Best-fit好  
+First-fit和Best-fit通常比Worst-fit好</font>
+
+#### Fragmentation 碎片
+##### <font color="darkblue">External Fragmentation</font> 外部碎片
+不同进程间还未分配出去的小内存空间，单个碎片无法分配给任何一个进程
+
+可以把它们压到一起，这种技术叫做**Compaction 紧缩技术**
+
+外部碎片存在于**可变分区、段式虚拟存储系统(分段存储 Segmentation)** 中，主要是可变分区
+
+##### <font color="darkblue">External Fragmentation</font> 内部碎片
+已经被分配出去的大于请求所需的内存空间部分  
+在固定分区中表现为分区内进程未使用的内存空间
+
+无法重新利用，只能被浪费
+
+内部碎片存在于**固定分区、页式虚拟存储系统（分页存储 Paging)** 中，主要是固定分区
+
+##### 如何减少碎片
+使用非连续分配
