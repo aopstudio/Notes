@@ -1303,3 +1303,79 @@ First-fit和Best-fit通常比Worst-fit好</font>
 
 ##### 如何减少碎片
 使用非连续分配
+
+## Storage management 2
+非连续分配
+
+### Paging 分页
+#### 基本做法
+- 把物理内存分为大小相等的块，称为**Frame（帧）**
+- 把逻辑内存分为大小相等的块，称为**Page（页）** 页的大小和帧相同
+- 追踪所有空闲帧，必要时可以找到n个空闲帧加载进程
+- 建立 **Page table（页表）** 记录Page和Frame的映射 页表只有一列
+
+#### Address translation scheme
+CPU产生的地址被分为
+- Page number(p)
+- Page offset(d)
+
+#### 分页的特点
+* 清楚划分物理地址和逻辑地址
+* 动态重定位
+* 没有外部碎片，但会有一些内部碎片（最后一页）
+* Page大小通常在4KB-8KB
+
+#### 页表的实现
+页表保存在主存中
+- Page-table base register(PTBR)指向页表起始
+- Page-table length register(PRLR)指明页表大小
+
+Page | Frame
+-----|-----
+|            
+|
+|
+|    
+
+每次数据访问需要两次访问内存
+- 一次为页表
+- 一次为数据
+
+如何优化内存访问
+* 使用TLB，一种支持并行搜索的硬件
+先在TLB里面查，如果页号在里面，就取出相应的帧号，如果不在再去内存的页表找
+
+**hit ratio 命中率**
+**EAT(effective access time)**
+
+#### 内存保护
+有效无效位  
+页是否在进程的地址空间内
+
+#### 页表结构
+* Hierarchical page tables
+* Hashed page tables
+* Inverted page tables
+
+##### Hierarchical page tables
+页表太大，不想连续存放
+可以分为二级页表    相当于二维数组
+
+##### Inverted page table
+系统里只有一张页表  只有真正使用的才被记录
+
+### Segmentation 分段
+#### 基本做法
+分为大小不同的段，用来存一组相对完整的逻辑信息  
+逻辑地址包含 **<段号，偏移>**
+
+#### Segment table 段表
+* Segment-table base register(STBR) 指向段表起始位置  
+* Segment-table length register(STLR) 指明段数量
+
+将二维逻辑地址转为一维物理地址
+- Base: 段起始空间
+- Limit: 段长度
+
+#### 优点
+分享代码或数据
