@@ -1312,7 +1312,7 @@ First-fit和Best-fit通常比Worst-fit好</font>
 - 把物理内存分为大小相等的块，称为**Frame（帧）**
 - 把逻辑内存分为大小相等的块，称为**Page（页）** 页的大小和帧相同
 - 追踪所有空闲帧，必要时可以找到n个空闲帧加载进程
-- 建立 **Page table（页表）** 记录Page和Frame的映射 页表只有一列
+- 建立 **Page table（页表）** 记录Page和Frame的映射 页表的数据列只有一列
 
 #### Address translation scheme
 CPU产生的地址被分为
@@ -1329,21 +1329,17 @@ CPU产生的地址被分为
 页表保存在主存中
 - Page-table base register(PTBR)指向页表起始
 - Page-table length register(PRLR)指明页表大小
-
-Page | Frame
------|-----
-|            
-|
-|
-|    
+ 
 
 每次数据访问需要两次访问内存
 - 一次为页表
 - 一次为数据
 
-如何优化内存访问
-* 使用TLB，一种支持并行搜索的硬件
+##### 如何优化内存访问
+* 使用TLB，一种支持并行搜索的高速硬件
 先在TLB里面查，如果页号在里面，就取出相应的帧号，如果不在再去内存的页表找
+
+![TLB](https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=354cef9bfd1f4134f43a0d2c4476feaf/dcc451da81cb39db25af152ed0160924ab18305e.jpg)
 
 **hit ratio 命中率**
 **EAT(effective access time)**
@@ -1379,3 +1375,177 @@ Page | Frame
 
 #### 优点
 分享代码或数据
+
+![段表1](https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=6522c6845b3d26973ade000f3492d99e/bd315c6034a85edf487f056d43540923dc547589.jpg)
+
+![段表2](https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c07910ba5bda81cb5aeb8b9f330fbb73/d6ca7bcb0a46f21fd31ea61dfc246b600c33ae52.jpg)
+
+## Storage mangement 3
+### Virtual memory 虚拟内存
+将用户逻辑内存从物理内存分离
+- 只有部分程序需要在内存中执行
+- 因此逻辑内存空间可以比内存空间大很多
+- 允许地址空间被多个进程共享
+
+通过需求分页来实现
+
+### Demand paging 需求分页
+当需要的时候才把页放入内存
+
+### Valid-Invalid bit
+1:页在内存  0:页不在内存  
+初始都为0
+
+现在页表的数据列变为了两列
+
+### Page fault 页错误
+地址不在内存，操作系统接管，在磁盘空间查找，找到后放回内存，回到页表修改
+
+如果主存没有空闲帧，则使用**Page replacement  页置换**
+
+### 虚拟内存的好处
+- Copy-on-Write
+- Memory-Mapped Files
+
+#### Copy-on-Write
+**COW**允许父进程和子进程共享同样的资源
+- 当共享的页需要修改时，则复制一份
+
+#### Memory-Mapped Files
+可以像内存访问一样读取文件
+
+### Page replacement 页置换
+#### 过程
+1. 在磁盘上找到需要的页的位置
+2. 在内存上找到空闲帧
+3. 如果没有，放一个牺牲帧到磁盘
+4. 将页放入空闲帧，更新页表
+
+使用**modify(dirty) bit**标识帧在取出磁盘后是否被修改
+
+页错误率    $0\leq p\leq 1$
+
+平均访问时间
+```c
+EAT=(1-p)*memory access  
+    +p(page fault interrupt  
+       +swap page out  
+       +swap page in  
+       +restart the process)  
+```
+
+### 一个典型页表的记录值包括
+* Page frame number
+* Present/absent bit
+* Protection bit
+* Modified bit
+* Referenced bit
+* Caching disabled bit
+
+会有空余部分，因为页表是按字节分配的
+
+### 页置换算法
+目标：更低的页错误率  
+评估方法：通过一个特定的页置换顺序(reference string)来评估
+
+#### FIFO Algorithm
+先进先出
+
+##### 范例
+假设最小物理块数为3块。页面引用序列如下：   
+7，0，1，2，0，3，0，4，2，3，0，3，2，1，2，0，1，7，0，1
+
+![FIFO](https://img-blog.csdn.net/20171231135159893?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3V4eTcyMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+**<font color=red>注意最开始还未填满时也算作页错误</font>**
+
+#### Optimal Algorithm 最优算法
+替换未来最长时间内不会被用到的页
+
+理论上可以达到最低的页错误率
+实际上无法做到，只是一个理论参考，因为不知道未来的情况
+
+##### 范例
+假定系统为某进程分配了三个物理块， 并考虑有以下的页面号引用串： 
+7，0，1，2，0，3，0，4，2，3，0，3，2，1，2，0，1，7，0，1 
+进程运行时，先将7，0，1三个页面装入内存。以后，当进程要访问页面2时，将会产生缺页中断。此时OS根据最佳置换算法，将选择页面7予以淘汰。
+
+![OPT](https://img-blog.csdn.net/20171231134709527)
+
+#### Least Recently Used (LRU)
+过去一段时间内未访问过的页面，在最近的将来可能也不会被访问  
+因此替换过去最长时间内没被用到的页
+
+两种实现方法
+* Counter计数器实现
+* Stack栈结构实现
+
+##### 栈实现方法
+可利用一个特殊的栈来保存当前使用的各个页面的页面号。每当进程访问某页面时，便将该页面的页面号从栈中移出，将它再压入栈顶。即栈顶始终是最新被访问页面的编号，而栈底则是最近最久未使用页面的页面号
+
+![LRU](https://img-blog.csdn.net/20171231135640268)
+
+对应，每个页面进入后的栈（栈的深度与物理块数量一致）
+![LRU Stack](https://img-blog.csdn.net/20171231140640646)
+
+#### LRU近似算法
+使用reference bit  
+被引用过设为1，没被引用过设为0
+
+每次置换reference bit为0的
+
+
+
+#### Clock置换算法（也称NRU算法）
+为每页设置一位访问位，再将内存中的所有页面都通过链接指针链接成一个循环队列。当某页被访问时，其访问位被置1。在选择页面淘汰时，只需检查页的访问位，如果是0，就选择该页换出；若为1，则重新将它置为0，暂时不换出，而给该页第二次驻留内存的机会，再按照FIFO算法检查下一个页面。当检查到队列中的最后一个页面时，若其访问位仍为1，则再返回到队首去检查第一个页面。由于该算法是循环地检查各页面的使用情况，故称为Clock算法。
+
+![Clock](https://images2015.cnblogs.com/blog/730938/201511/730938-20151115195530290-388030166.jpg)
+
+#### 改进型Clock置换算法：
+由访问位A和修改位M可以组合成下面四种类型的页面：   
+1. (A=0, M=0)：表示该页最近既未被访问，又未被修改，是最佳淘汰页   
+2. (A=0, M=1)：表示该页最近未被访问，但已被修改，并不是很好的淘汰页   
+3. (A=1, M=0)：最近已被访问，但未被修改，该页有可能再被访问  
+4. (A=1, M=1)：最近已被访问且被修改，该页可能再被访问
+
+#### 另一种版本的说法
+>#### Second-Chance Page-Replacement 二次机会法 (也称CLOCK算法)
+>有一个时钟顺序，如果轮到要置换的页的reference bit为1，则
+>1. 设reference bit为0
+>2. 把该页留在内存
+>3. 查找下一个reference bit为0的进行替换
+
+>注：各种资料对于Clock算法、二次机会法、NRU算法分类不统一，以Clock算法也称NRU算法为准
+
+#### Counting Algorithms
+用一个计数器记录页的使用次数
+- LFU(Least Frequently Used) 替换使用次数最小的
+- MFU(Most Frequently Used) 替换使用次数最多的
+
+### Thrashing 颠簸（抖动）
+内存没有足够帧  
+进程忙于交换页  
+此时CPU利用率极其低下
+
+### TLB Reach
+能从TLB访问到的内存总数
+TLB Reach=(TLB Size)*(Page Size)
+
+理想情况下，每个进程的工作集都存在TLB
+
+### Allocation of Frames
+- Fixed allocation 固定分配
+- Priority allocation 优先级分配
+
+#### 固定分配
+* 同等分配
+    100个帧分给5个进程，每个20页
+* 按比例分配
+    根据进程大小分配
+
+#### 优先级分配
+如果Pi产生页错误
+- 从自己拥有的帧里选一个替换帧 local replacement
+- 从其他低优先级的进程中得到一个替换帧 global replacement
+
+**页表里条目数量就看页数**（不知道为什么突然加了这么一句）
