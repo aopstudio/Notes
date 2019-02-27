@@ -1748,3 +1748,79 @@ File-Allocation Table **<font color=darkblue>FAT</font>**
 在第一个空闲块存n个空闲块的地址，在n个空闲块的最后一个再存n个空闲块的地址
 ##### Counting
 
+## I/O System
+### I/O Device
+- Block devices 块设备
+由于信息的存取总是以数据块为单位的，所以存储信息的设备称为块设备，如硬盘，每个都有自己的地址，可寻址
+- Character devices 字符设备
+用于数据输入输出的设备为字符设备，因为其传输的基本单位是字符，如打印机，不可寻址
+
+### Device Controllers
+I/O设备有机械和电子部分
+电子部分叫controller
+
+### CPU和Controller交互
+每个controller有一些寄存器用来和CPU交互
+
+两种方案
+1. 每个controller register有端口号，CPU使用端口号访问
+2. 把所有寄存器的值导入内存，CPU访问内存
+
+### I/O设备特点
+各种各样
+
+### I/O软件目标
+* 屏蔽硬件
+* 错误处理
+* 缓存 
+
+### I/O系统基本思想
+* 抽象
+* 封装
+
+### I/O software layers
+* 中断处理
+* 设备驱动
+* 设备无关的I/O软件
+
+### Kernel I/O Subsystem
+- Scheduling
+- Buffering 缓冲
+    在设备传输时存数据
+    解决设备速度不一致
+- Caching 缓存
+    快速存储数据备份
+- Spooling
+    保存设备输出
+
+### Disk 硬盘
+磁道  
+扇区  
+
+#### 调度
+访问时间有两部分
+1. **Seek time(主要)** 磁头寻道时间
+2. Rotational latency 磁盘转到合适位置需要的时间
+
+#### 调度算法
+##### FCFS
+先来先服务
+##### SSTF
+最短寻道时间优先  
+离磁头当前位置最近的优先
+##### SCAN 扫描
+先按一个方向走完，再换另一个方向走
+##### C-SCAN
+先向一个方向，回来直接到边界，再按同一方向走
+##### C-LOOK
+先向一个方向，回来到最远的访问点，再按同一方向走
+
+#### Disk management
+低级格式化，也称物理格式化
+- 所有盘面上的扇区编好道
+
+高级格式化，也称逻辑格式化
+- 建立起文件系统
+
+#### RAID
+冗余磁盘阵列
