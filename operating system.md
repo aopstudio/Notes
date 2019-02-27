@@ -1549,3 +1549,202 @@ TLB Reach=(TLB Size)*(Page Size)
 - 从其他低优先级的进程中得到一个替换帧 global replacement
 
 **页表里条目数量就看页数**（不知道为什么突然加了这么一句）
+
+## Storage mangagement 4
+### File system
+* 存大量数据
+* 进程停止后数据能保存
+* 多个进程可以并发访问
+
+### File
+在用户视角中，文件是最小的分配存储
+#### Attributes 属性
+* 名称
+* 标识符
+* 类型
+* 位置
+* 大小
+* 保护
+* 时间、日期和用户标识
+
+#### Operations 基本操作
+* 创建文件
+* 写文件
+* 读文件
+* 文件重定位（文件寻址）
+* 删除文件
+* 截断文件
+
+6个基本操作可以组合执行其他文件操作
+
+#### Structures
+1. 字节
+2. 记录
+3. 树
+
+#### Access methods
+* 顺序访问
+* 直接访问
+* 索引访问，在直接访问之上
+
+### 文件系统组织
+- 磁盘被分区
+    逻辑分区 CDEF
+- 文件信息保存在目录 **directory**
+    directory可以看成符号表，将文件名翻译为目录条目
+
+### Logical Structure of a directory 目录结构
+* Single-Level Directory
+* Two-Level Directory
+* Tree-Structured Directory
+* Acyclic-Graph Directory
+* General-Graph Directory
+
+#### Single-Level Directory 单级目录结构
+所有User一个目录  
+文件名要唯一
+```dot
+graph sld{
+    ROOT [shape=folder];
+    A,B,C [shape=note];
+    ROOT -- A,B,C
+}
+```
+
+#### Two-Level Directory 两级目录结构
+* 每个User一个目录
+* 当一个User需要特定文件时，只在它的目录搜索
+* 不同用户可以有相同名称的文件
+* 协作困难
+```dot
+graph tld{
+    ROOT,UserA,UserB,UserC [shape=folder];
+    a1,a2,b1,c1,c2,c3 [shape=note,label=""];
+    ROOT--UserA,UserB,UserC
+    UserA--a1,a2
+    UserB--b1
+    UserC--c1,c2,c3
+}
+```
+
+#### Tree-Structured Directory 树形目录结构（多级目录结构）
+最普遍的
+* 有一个跟
+* 每个文件都有唯一路径名
+
+```dot
+graph tsd{
+    ROOT,A,B,C,D,E [shape=folder]
+    a1,d1,b1 [shape=note,label=""]
+    ROOT--A,B,C
+    A--a1
+    B--D,b1,E
+    D--d1 
+}
+```
+
+#### Acyclic-Graph Directory 无环图
+树形目录结构可便于实现文件分类，但不便于实现文件共享，为此在树形目录结构的基础上增加一些指向同一节点的有向边
+
+父目录共享子目录和文件，但共享边不会形成环
+```dot
+digraph agd{
+    ROOT,A,B,C,D,E [shape=folder]
+    ROOT->A,B,C
+    A,B->D
+    A,C->E
+}
+```
+#### General-Graph Directory 有环图
+共享边有环
+
+会产生问题
+
+### 文件系统架构
+#### 从上到下分层
+
+层级|操作、实例
+----|----
+App, Programs |发出文件请求的代码
+Logical File System|OS最高层。保护、安全、文件名解析
+File-organization Module|逻辑块
+Basic File System|具体文件块
+I/O Control|驱动、中断
+Devices|Disk,tapes
+
+#### The On-desk structures
+包含
+- boot control block: 启动OS的信息
+- partition control block: 分区信息
+- directory structure
+- **<font color=blue>FCB(File Control Block)</font>**: 文件细节
+
+#### 目录实现 Directory Implementation
+* 线性表
+* Hash表
+    * 缩短时间
+    * 冲突
+    * 大小固定
+* 文件名存储
+    * 行内
+    * 堆内
+
+### 分配磁盘块方法
+- Contiguous allocation 连续分配
+- Linked allocation 链接分配
+- Indexed allocation 索引分配
+
+#### 连续分配
+\<起始块位置，文件长度\>
+- 简单、快速
+- 有浪费
+- 文件大小不能改变
+
+#### 链接分配
+- 离散的
+- 链表结构
+- 没有浪费
+- 不能直接访问
+
+例子
+File-Allocation Table **<font color=darkblue>FAT</font>**
+
+#### 索引分配
+每个文件都有索引快
+* 需要索引表
+* 随机访问
+* 没有外部碎片，但小文件有内部碎片
+
+### Free space management 空闲空间管理
+#### 空闲表法
+为所有空闲块建立一张空闲块标，每个空闲区对应一个空闲表项，内容包括表项序号、该空闲区第一个盘块号、该区的空闲盘块数
+
+例子  
+序号|第一个空闲块号|空闲块数
+----|------------|-------
+1   |2           |4
+2   |9           |3
+3   |15          |5
+4   |...         |...
+
+#### Bit vector 位示图法
+##### bit map 位示图
+每个块用1 bit表示
+- 如果块空闲，bit为1
+- 如果块被分配，bit为0
+
+特点
+- 简单
+- 有效找到第一个空闲块
+- 容易得到连续的空闲块 1111
+- bit map需要额外的空间
+
+#### Linked list 空闲链表法
+##### free list
+空闲块用链表的形式连接
+- 不浪费空间
+- 必须遍历list
+##### Grouping
+在第一个空闲块存n个空闲块的地址，在n个空闲块的最后一个再存n个空闲块的地址
+##### Counting
+
