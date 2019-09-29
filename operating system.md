@@ -573,7 +573,7 @@ s++
 
 初始化：
 ```c
-int matex=1;
+int mutex=1;
 ```
 Critical section of n processes
 ```c
