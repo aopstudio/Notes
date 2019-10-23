@@ -1,3 +1,5 @@
+# 字典顺序表
+
 accuracy 精确度
 affirm 证实
 as sb puts it 正如某人所说
@@ -10,6 +12,8 @@ claim 声称，主张
 clarity 清晰
 clergyman 牧师
 confront 面临，遇到
+cosmetic 化妆品
+cosmic 宇宙的，广阔无边的
 cope 对付，处理；斗篷
 delicate 易碎的；精美的；微妙的，需要谨慎处理的
 dilute 稀释
@@ -17,6 +21,8 @@ disproportionately 不成比例地
 domestic 家庭的，内部的
 durable 长期的 —— temporary 暂时的
 elaborate 详细阐述
+esthetic 美学的
+ethnic 种族的，少数民族的
 extensively 广泛地
 extravagant 过度的
 folk 平民老百姓
@@ -45,6 +51,7 @@ sum up 总结
 superstitious 迷信的 superstitions 迷信
 tedious 冗长的，乏味的
 theological 神学的
+threshold 开端
 turn around 使转身；使好转，扭转
 turn out 证明是，结果是
 trivial 琐碎的
@@ -52,3 +59,15 @@ unaccountably 莫名其妙，没有原因的
 unfold 逐渐展现，表露，阐明
 valuing 尊重，重视
 virtuosity 技艺
+
+# 形近词
+esthetic 美学的 - ethnic 种族的，少数民族的
+brim 边缘 - grim 严酷的，无情的；令人沮丧的；讨厌的 
+
+# 多义词
+object n. 物体；目标 v. 提出……作为反对的理由；反对
+    objection 反对；异议
+    objective n 目标，目的 adj. 客观的
+    objector n 反对者，提出异议的人
+    object to 反对
+    objectify v. 使具体化；使客观化
