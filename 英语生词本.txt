@@ -4,8 +4,10 @@ accuracy 精确度
 affirm 证实
 as sb puts it 正如某人所说
 at the thought of 一想起就
+autonomy 人身自由
 bear in mind 牢记在心
 better still 更好的是
+bolt n.门栓，螺栓 v.马受惊脱缰
 chronic 长期的 —— temporary 暂时的
 civility 文明礼仪
 claim 声称，主张
@@ -15,11 +17,13 @@ confront 面临，遇到
 cosmetic 化妆品
 cosmic 宇宙的，广阔无边的
 cope 对付，处理；斗篷
+crafty 狡猾的，诡计多端的
 delicate 易碎的；精美的；微妙的，需要谨慎处理的
 dilute 稀释
 disproportionately 不成比例地
 domestic 家庭的，内部的
 durable 长期的 —— temporary 暂时的
+elapse v. 时间流逝
 elaborate 详细阐述
 esthetic 美学的
 ethnic 种族的，少数民族的
@@ -29,12 +33,17 @@ folk 平民老百姓
 got over to sb 把……说清楚，使理解
 illusory 虚幻的
 indefinitely 不明确地
+intensive 加强的
+intermittent 断断续续的
+lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 live off 依赖（某人）生活; 靠（某一数目的钱）过活; 靠（某一收入来源）过活
 neglect 忽视
 off 离开
 overlook 忽视
 overestimate 高估
 perform experiment 做实验（固定用法）
+plaintiff 原告
+proficient 精通的，熟练的
 pursuit 兴趣，爱好；追求
 puritan 清教徒
 put down to sth 把（某事）归因于……
@@ -63,6 +72,7 @@ virtuosity 技艺
 # 形近词
 esthetic 美学的 - ethnic 种族的，少数民族的
 brim 边缘 - grim 严酷的，无情的；令人沮丧的；讨厌的 
+elapse v.时间流逝 - lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 
 # 多义词
 object n. 物体；目标 v. 提出……作为反对的理由；反对
