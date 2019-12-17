@@ -3,6 +3,7 @@
 accuracy 精确度
 affirm 证实
 as sb puts it 正如某人所说
+assimilate 童话
 at the thought of 一想起就
 atmosphere 氛围
 autonomy 人身自由
@@ -16,6 +17,9 @@ civility 文明礼仪
 claim 声称，主张
 clarity 清晰
 clergyman 牧师
+compensating 补偿的，弥补的
+complementary 互补的，补充的
+comprehensive 综合的，全面的
 confront 面临，遇到
 contemporary 当代的，当前的
     - in contemporary society 在当前社会
@@ -55,6 +59,7 @@ intermittent 断断续续的
 justice 公正
 lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 live off 依赖（某人）生活; 靠（某一数目的钱）过活; 靠（某一收入来源）过活
+monopolizing 垄断，独占
 neglect 忽视
 off 离开
 overlook 忽视
@@ -70,6 +75,7 @@ put forward 提出，倡议
 rare bird （褒义）罕见、稀有的人或事物
 redundant 多余的
 reluctant 不情愿的
+retain 保持，持有
 rigorous 严谨的
 self-interested 自私
 sermon 说教
@@ -78,6 +84,7 @@ so far迄今为止
 Spread to 扩散到
 subject sb to sth 使某人遭受、经历某事
 succinctly 简洁地
+sustain 维持；支撑
 sum up 总结
 superstitious 迷信的 superstitions 迷信
 tedious 冗长的，乏味的
