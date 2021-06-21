@@ -53,6 +53,7 @@ extravagant 过度的
 fanatic 狂热的
 fine tradition 优良传统
 folk 平民老百姓
+fringe 边缘
 furthermore 除此之外
 got over to sb 把……说清楚，使理解
 harmonious 和谐的
@@ -120,6 +121,9 @@ Vigorously advocate 大力提倡
 virtuosity 技艺
 
 # 形近词
+- contract 合同
+- contradict 反驳，相反的
+
 - esthetic 美学的
 - ethnic 种族的，少数民族的
 
@@ -133,6 +137,12 @@ virtuosity 技艺
 - efficient 有效率的
 - sufficient 充分的
 - proficient 精通的，熟练的
+
+- prosecute 控告，起诉
+- persecute 迫害
+
+- pin 大头针
+- spin 旋转
 
 # 多义词
 object n. 物体；目标 v. 提出……作为反对的理由；反对
