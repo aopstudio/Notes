@@ -7,11 +7,13 @@ assimilate 童话
 at the thought of 一想起就
 atmosphere 氛围
 autonomy 人身自由
+barrel 桶
 be punished by the law 受到法律惩罚
 bear in mind 牢记在心
 besides 除此之外
 better still 更好的是
 bolt n.门栓，螺栓 v.马受惊脱缰
+ceiling 天花板
 chronic 长期的 —— temporary 暂时的
 civility 文明礼仪
 claim 声称，主张
@@ -40,24 +42,30 @@ domestic 家庭的，内部的
 durable 长期的 —— temporary 暂时的
 elapse v. 时间流逝
 elaborate 详细阐述
+empirical 经验主义的
 entail 使必须（做某事）；需要（做某事）
 equality 平等
 erode 削弱
     - get eroded 削弱 
 esthetic 美学的
 ethnic 种族的，少数民族的
-exceed 超出限制
+exceed v. 超出限制
+excess n. 过多，过度
+excessive adj. 过多的
 exclusion 排斥
 extensively 广泛地
 extravagant 过度的
+facet 方面
 fanatic 狂热的
 fine tradition 优良传统
 folk 平民老百姓
 fringe 边缘
 furthermore 除此之外
+gasp 喘息
 got over to sb 把……说清楚，使理解
 harmonious 和谐的
     - harmony 和谐（名词）
+heritage 遗产
 idol 偶像
 illusory 虚幻的
 impartial 公正的，不偏不倚的
@@ -71,6 +79,7 @@ justice 公正
 lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 live off 依赖（某人）生活; 靠（某一数目的钱）过活; 靠（某一收入来源）过活
 mania 狂热
+mediate 调解
 monopolizing 垄断，独占
 neglect 忽视
 off 离开
@@ -80,9 +89,12 @@ overestimate 高估
 pass away 去世
 perform experiment 做实验（固定用法）
 phenomenon 现象
+pile 一堆
 plaintiff 原告
+plead 恳求
 proficient 精通的，熟练的
 prosperity 繁荣，富强
+provoke 引起，刺激
 pursuit 兴趣，爱好；追求
 puritan 清教徒
 put down to sth 把（某事）归因于……
@@ -95,6 +107,7 @@ reluctant 不情愿的
 retain 保持，持有
 revenue 财政收入，税收
 rigorous 严谨的
+ritual 例行公事
 self-interested 自私
 sermon 说教
 since ancient times 自古以来
@@ -103,6 +116,7 @@ Spread to 扩散到
 startling 令人吃惊的
 subject sb to sth 使某人遭受、经历某事
 succinctly 简洁地
+surge n. 急剧上升 v. 奔腾，波动
 sustain 维持；支撑
 sum up 总结
 superstitious 迷信的 superstitions 迷信
@@ -124,11 +138,21 @@ virtuosity 技艺
 - contract 合同
 - contradict 反驳，相反的
 
-- esthetic 美学的
-- ethnic 种族的，少数民族的
+- delete 删除
+- deplete 耗尽
+- deter 阻止，妨碍
+
+- dose 剂量
+- doze 瞌睡
 
 - brim 边缘 
 - grim 严酷的，无情的；令人沮丧的；讨厌的 
+
+- esthetic 美学的
+- ethnic 种族的，少数民族的
+
+- excerpt 摘录
+- expect 专家
 
 - elapse v.时间流逝 
 - lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
@@ -137,6 +161,12 @@ virtuosity 技艺
 - efficient 有效率的
 - sufficient 充分的
 - proficient 精通的，熟练的
+
+- gracious 慈祥的
+- spacious 宽敞的
+
+- mediate 调解
+- meditate 冥想
 
 - prosecute 控告，起诉
 - persecute 迫害
@@ -200,6 +230,7 @@ while 然而
     while 强调的是对比，表示上下文有不同有对比，但这个不同不一定是表示相反含义的。例如：He is a worker while I am a doctor.
     whereas 强调的则是相反。例如：Some people like fat meat, whereas others hate it.
     基本上可以理解为 whereas 都可以换成 while，但 while 却不一定能换成 whereas。
+    while更贴近“而”，whereas更贴近“然而”
 
 # 作者的态度
 supportive
