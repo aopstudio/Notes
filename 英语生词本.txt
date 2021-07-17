@@ -50,6 +50,7 @@ erode 削弱
 esthetic 美学的
 ethnic 种族的，少数民族的
 exceed v. 超出限制
+excerpt n. 摘录，节选
 excess n. 过多，过度
 excessive adj. 过多的
 exclusion 排斥
@@ -135,6 +136,9 @@ Vigorously advocate 大力提倡
 virtuosity 技艺
 
 # 形近词
+- chimney 烟囱
+- kidney 肾脏
+
 - contract 合同
 - contradict 反驳，相反的
 
