@@ -168,6 +168,9 @@ virtuosity 技艺
 - mediate 调解
 - meditate 冥想
 
+- pasture 牧场
+- posture 姿态，姿势
+
 - prosecute 控告，起诉
 - persecute 迫害
 
