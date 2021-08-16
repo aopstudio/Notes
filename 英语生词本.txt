@@ -23,6 +23,8 @@ cognitive 认知的
 compensating 补偿的，弥补的
 complementary 互补的，补充的
 comprehensive 综合的，全面的
+comprise v. 组成
+compromise n. 妥协
 conceive 怀孕
 confront 面临，遇到
 contemporary 当代的，当前的
@@ -123,6 +125,8 @@ sum up 总结
 superstitious 迷信的 superstitions 迷信
 take one's own life 自杀
 tedious 冗长的，乏味的
+temporal 世俗的
+temporary 暂时的
 theological 神学的
 threshold 开端
 turn around 使转身；使好转，扭转
@@ -138,6 +142,9 @@ virtuosity 技艺
 # 形近词
 - chimney 烟囱
 - kidney 肾脏
+
+- comprise v. 组成
+- compromise n. 妥协
 
 - contract 合同
 - contradict 反驳，相反的
@@ -177,6 +184,9 @@ virtuosity 技艺
 
 - pin 大头针
 - spin 旋转
+
+- temporal 世俗的
+- temporary 暂时的
 
 # 多义词
 object n. 物体；目标 v. 提出……作为反对的理由；反对
