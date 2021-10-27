@@ -38,6 +38,7 @@ delicate 易碎的；精美的；微妙的，需要谨慎处理的
 diffuse 使（气体等）扩散；传播
 dilute 稀释
 disperse 散开
+dispute 争论，辩论 n. adj.
 dissolve 溶解
 disproportionately 不成比例地
 domestic 家庭的，内部的
@@ -49,6 +50,7 @@ entail 使必须（做某事）；需要（做某事）
 equality 平等
 erode 削弱
     - get eroded 削弱 
+escalate 不断恶化，加剧
 esthetic 美学的
 ethnic 种族的，少数民族的
 exceed v. 超出限制
@@ -69,14 +71,17 @@ got over to sb 把……说清楚，使理解
 harmonious 和谐的
     - harmony 和谐（名词）
 heritage 遗产
+humiliate 侮辱
 idol 偶像
 illusory 虚幻的
 impartial 公正的，不偏不倚的
 indefinitely 不明确地
+insult 侮辱
 integrity 诚实
 intensive 加强的
 interference 干涉
 intermittent 断断续续的
+intimidate 威胁，恐吓
 intuitive 直觉的
 justice 公正
 lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
@@ -129,6 +134,7 @@ temporal 世俗的
 temporary 暂时的
 theological 神学的
 threshold 开端
+toil 辛勤的 adj.  辛苦劳动 n.  
 turn around 使转身；使好转，扭转
 turn out 证明是，结果是
 trait 特征，个人特征
@@ -140,11 +146,18 @@ Vigorously advocate 大力提倡
 virtuosity 技艺
 
 # 形近词
+- cattle 牛
+- castle 城堡
+
 - chimney 烟囱
 - kidney 肾脏
 
 - comprise v. 组成
 - compromise n. 妥协
+
+- contemporary 当前的
+- temporary 暂时的
+- temporal 世俗的
 
 - contract 合同
 - contradict 反驳，相反的
@@ -173,11 +186,18 @@ virtuosity 技艺
 - sufficient 充分的
 - proficient 精通的，熟练的
 
-- gracious 慈祥的
-- spacious 宽敞的
+- genuine 真诚的，诚恳的
+- genius 天才
 
+- immediately 立刻，马上
+- intermediate 中间的
+- intimidate 威胁，恐吓
+- humiliate 羞辱
 - mediate 调解
 - meditate 冥想
+
+- gracious 慈祥的
+- spacious 宽敞的
 
 - oval 卵形的，椭圆形的
 - oral 口头的
@@ -191,11 +211,17 @@ virtuosity 技艺
 - pin 大头针
 - spin 旋转
 
+- resultant 因此而产生的，后果
+- redundant 多余的，过剩的
+
 - sanction 同意，批准，许可
 - transaction 交易
 
-- temporal 世俗的
-- temporary 暂时的
+
+
+# 反义词
+- implicit 含蓄的
+- explicit 直白的
 
 # 多义词
 object n. 物体；目标 v. 提出……作为反对的理由；反对
