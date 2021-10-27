@@ -16,6 +16,7 @@ bolt n.门栓，螺栓 v.马受惊脱缰
 ceiling 天花板
 chronic 长期的 —— temporary 暂时的
 civility 文明礼仪
+circus 马戏表演
 claim 声称，主张
 clarity 清晰
 clergyman 牧师
@@ -142,6 +143,7 @@ trivial 琐碎的
 unaccountably 莫名其妙，没有原因的
 unfold 逐渐展现，表露，阐明
 valuing 尊重，重视
+venue 场馆
 Vigorously advocate 大力提倡
 virtuosity 技艺
 
@@ -177,6 +179,10 @@ virtuosity 技艺
 
 - excerpt 摘录
 - expect 专家
+
+- exploit 充分利用，压榨
+- explode 爆炸
+- explore 探索
 
 - elapse v.时间流逝 
 - lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
