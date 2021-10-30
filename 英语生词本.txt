@@ -13,6 +13,7 @@ bear in mind 牢记在心
 besides 除此之外
 better still 更好的是
 bolt n.门栓，螺栓 v.马受惊脱缰
+bypass 旁路
 ceiling 天花板
 chronic 长期的 —— temporary 暂时的
 civility 文明礼仪
@@ -20,6 +21,7 @@ circus 马戏表演
 claim 声称，主张
 clarity 清晰
 clergyman 牧师
+coalition 同盟
 cognitive 认知的
 compensating 补偿的，弥补的
 complementary 互补的，补充的
@@ -46,6 +48,7 @@ domestic 家庭的，内部的
 durable 长期的 —— temporary 暂时的
 elapse v. 时间流逝
 elaborate 详细阐述
+elicit 引出
 empirical 经验主义的
 entail 使必须（做某事）；需要（做某事）
 equality 平等
@@ -61,6 +64,7 @@ excessive adj. 过多的
 exclusion 排斥
 extensively 广泛地
 extravagant 过度的
+fabulous 绝妙的
 facet 方面
 fanatic 狂热的
 fine tradition 优良传统
@@ -68,7 +72,9 @@ folk 平民老百姓
 fringe 边缘
 furthermore 除此之外
 gasp 喘息
+garment 一件衣服
 got over to sb 把……说清楚，使理解
+gross 总共，毛重
 harmonious 和谐的
     - harmony 和谐（名词）
 heritage 遗产
@@ -87,11 +93,14 @@ intuitive 直觉的
 justice 公正
 lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 live off 依赖（某人）生活; 靠（某一数目的钱）过活; 靠（某一收入来源）过活
+mable 大理石
 mania 狂热
 mediate 调解
 monopolizing 垄断，独占
 neglect 忽视
 off 离开
+outset 开始，开端
+outskirts 郊区
 overlook 忽视
 overrate 高估
 overestimate 高估
@@ -102,27 +111,34 @@ pile 一堆
 plaintiff 原告
 plead 恳求
 proficient 精通的，熟练的
+prompt 迅速的
 prosperity 繁荣，富强
 provoke 引起，刺激
 pursuit 兴趣，爱好；追求
 puritan 清教徒
 put down to sth 把（某事）归因于……
 put forward 提出，倡议
+racket 噪音；球拍
 rare bird （褒义）罕见、稀有的人或事物
 reasonably 理性地
 redundant 多余的
 regime 统治制度，政权
 reluctant 不情愿的
+restore 恢复
 retain 保持，持有
 revenue 财政收入，税收
 rigorous 严谨的
 ritual 例行公事
 self-interested 自私
 sermon 说教
+shaft 轴
 since ancient times 自古以来
+slope 斜面
 so far迄今为止
 Spread to 扩散到
+staple 主要的；装订
 startling 令人吃惊的
+stuff 材料
 subject sb to sth 使某人遭受、经历某事
 succinctly 简洁地
 surge n. 急剧上升 v. 奔腾，波动
@@ -142,12 +158,30 @@ trait 特征，个人特征
 trivial 琐碎的
 unaccountably 莫名其妙，没有原因的
 unfold 逐渐展现，表露，阐明
+vague 模糊的
 valuing 尊重，重视
 venue 场馆
 Vigorously advocate 大力提倡
 virtuosity 技艺
+worship 崇拜（宗教）
 
 # 形近词
+- abrupt 突然的；不连贯的；鲁莽的
+- corrupt 贪污的，腐败的
+- bankrupt 破产
+
+- ago 之前
+- ego 自尊心
+
+- assert 断言
+- asset 财产，资产
+
+- bold 大胆的，勇敢的
+- bald 秃顶的
+
+- bypass 旁路
+- pass 通过
+
 - cattle 牛
 - castle 城堡
 
@@ -195,12 +229,18 @@ virtuosity 技艺
 - genuine 真诚的，诚恳的
 - genius 天才
 
+- heave 举起
+- weave 编织
+
 - immediately 立刻，马上
 - intermediate 中间的
 - intimidate 威胁，恐吓
 - humiliate 羞辱
 - mediate 调解
 - meditate 冥想
+
+- inference 推断
+- interference 干涉
 
 - gracious 慈祥的
 - spacious 宽敞的
@@ -211,19 +251,42 @@ virtuosity 技艺
 - pasture 牧场
 - posture 姿态，姿势
 
+- plague 瘟疫
+- vague 模糊的
+
+- pledge n.誓言 v.发誓
+- plunge 猛跌
+- plug 塞子
+- sponge 海绵
+
 - prosecute 控告，起诉
 - persecute 迫害
+
+- provision 提供，供应；条款，规定
+- vision 视野
 
 - pin 大头针
 - spin 旋转
 
 - resultant 因此而产生的，后果
 - redundant 多余的，过剩的
+- reluctant 勉强的，不情愿的
 
 - sanction 同意，批准，许可
 - transaction 交易
 
+- sob 哭泣
+- sober 清醒的
 
+- timber 木材
+- tumble 摔倒
+
+- tub 盆
+- tug 猛拉
+- mug 大柄杯子
+
+- vicious 残暴的，恶毒的
+- vigorous 充满活力的，果断的
 
 # 反义词
 - implicit 含蓄的
