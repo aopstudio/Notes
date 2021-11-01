@@ -12,9 +12,12 @@ be punished by the law 受到法律惩罚
 bear in mind 牢记在心
 besides 除此之外
 better still 更好的是
+bewilder 使迷惑，使糊涂
 bolt n.门栓，螺栓 v.马受惊脱缰
+brisk 轻快的，生机勃勃的
 bypass 旁路
 ceiling 天花板
+charter 宪章；特权
 chronic 长期的 —— temporary 暂时的
 civility 文明礼仪
 circus 马戏表演
@@ -30,6 +33,7 @@ comprise v. 组成
 compromise n. 妥协
 conceive 怀孕
 confront 面临，遇到
+conspicuous 显眼的
 contemporary 当代的，当前的
     - in contemporary society 在当前社会
 cosmetic 化妆品
@@ -38,6 +42,7 @@ cope 对付，处理；斗篷
 crafty 狡猾的，诡计多端的
 dedication 敬业
 delicate 易碎的；精美的；微妙的，需要谨慎处理的
+dense 稠密的
 diffuse 使（气体等）扩散；传播
 dilute 稀释
 disperse 散开
@@ -69,6 +74,7 @@ facet 方面
 fanatic 狂热的
 fine tradition 优良传统
 folk 平民老百姓
+formidable 可怕的，令人敬畏的，难对付的
 fringe 边缘
 furthermore 除此之外
 gasp 喘息
@@ -105,6 +111,7 @@ overlook 忽视
 overrate 高估
 overestimate 高估
 pass away 去世
+peer 同辈，同龄人
 perform experiment 做实验（固定用法）
 phenomenon 现象
 pile 一堆
@@ -140,6 +147,7 @@ staple 主要的；装订
 startling 令人吃惊的
 stuff 材料
 subject sb to sth 使某人遭受、经历某事
+subsidy 财政补助，津贴
 succinctly 简洁地
 surge n. 急剧上升 v. 奔腾，波动
 sustain 维持；支撑
@@ -147,11 +155,12 @@ sum up 总结
 superstitious 迷信的 superstitions 迷信
 take one's own life 自杀
 tedious 冗长的，乏味的
-temporal 世俗的
-temporary 暂时的
+temporal 世俗的；暂存的，短暂的
+temporary 暂时的，临时的
 theological 神学的
 threshold 开端
 toil 辛勤的 adj.  辛苦劳动 n.  
+trait 特征
 turn around 使转身；使好转，扭转
 turn out 证明是，结果是
 trait 特征，个人特征
@@ -166,6 +175,23 @@ virtuosity 技艺
 worship 崇拜（宗教）
 
 # 形近词
+- arrogant 傲慢的
+- ignorant 无知的
+
+- aggravate 加剧
+- aggregate 综合
+- degenerate 堕落
+
+- appoint 任命
+- appointment 约会
+- disappoint 辜负
+
+- avenue 大道
+- venue 场地，场馆
+
+- bibliography 参考书目
+- biography 传记
+- biology 生物学
 - abrupt 突然的；不连贯的；鲁莽的
 - corrupt 贪污的，腐败的
 - bankrupt 破产
@@ -207,15 +233,24 @@ worship 崇拜（宗教）
 - sufficiency n. 足量，充足
 - efficiency 效率
 
+- dean 院长
+- deem 认为
+
 - delete 删除
 - deplete 耗尽
 - deter 阻止，妨碍
+
+- dense 密集的
+- tense 拉紧的，紧张的
 
 - dose 剂量
 - doze 瞌睡
 
 - brim 边缘 
 - grim 严酷的，无情的；令人沮丧的；讨厌的 
+
+- estate 财产
+- estimate 估计
 
 - esthetic 美学的
 - ethnic 种族的，少数民族的
@@ -238,6 +273,32 @@ worship 崇拜（宗教）
 - genuine 真诚的，诚恳的
 - genius 天才
 
+- gown 女士礼服；法官长袍；手术服
+
+- grim 严峻的，忧愁的
+- grin 咧嘴笑
+
+- hamper 妨碍，阻碍，牵制
+- hammer 锤子
+
+- heel 鞋跟
+- heal 治愈
+- pee 小便
+- pear 梨
+- peel 剥去
+- peer 同龄人
+- reel 卷轴
+- rear 后面
+
+- idiot 笨蛋
+- idiom 成语
+
+- irony 讽刺，嘲弄
+- ivory 象牙
+
+- hobby 爱好
+- lobby 门厅，休息室，接待室
+- lorry 卡车
 - heave 举起
 - weave 编织
 
@@ -247,6 +308,27 @@ worship 崇拜（宗教）
 - humiliate 羞辱
 - mediate 调解
 - meditate 冥想
+- medieval 中世纪的，中古的
+
+- loyalty 忠诚，忠心
+- royalty 皇室成员；版税
+
+- lucrative 赚大钱的
+- lubricate 润滑
+
+- meadow 草场，牧场
+- widow 寡妇
+
+- merge 合并
+- submerge 沉没
+
+- narrow 狭窄的
+- shallow 浅的
+- shadow 影子
+- swallow 吞下
+
+- negative 消极的
+- neglect 忽视
 
 - inference 推断
 - interference 干涉
@@ -260,6 +342,16 @@ worship 崇拜（宗教）
 - pasture 牧场
 - posture 姿态，姿势
 
+- position 位置
+- disposition 性情
+- proposition 提议
+
+- pilgrim 朝圣者
+- plagiarism 剽窃，抄袭
+
+- predict 预言
+- verdict 裁定，判断
+- versus 对抗，对比
 - plague 瘟疫
 - vague 模糊的
 
@@ -268,8 +360,14 @@ worship 崇拜（宗教）
 - plug 塞子
 - sponge 海绵
 
+- property 财产
+- prosperity 繁荣，兴旺
+- prospective 未来的，预期的，可能的
+- respective 各自的
+
 - prosecute 控告，起诉
 - persecute 迫害
+- execute 处决
 
 - provision 提供，供应；条款，规定
 - vision 视野
@@ -281,8 +379,24 @@ worship 崇拜（宗教）
 - redundant 多余的，过剩的
 - reluctant 勉强的，不情愿的
 
+- sack 麻袋
+- sake 目的，理由，好处
+
 - sanction 同意，批准，许可
 - transaction 交易
+
+- shabby 破旧的
+- shady 成荫的；阴暗的；名声不好的
+
+- stride 大步走
+- stripe 条纹
+- strip 脱衣
+
+- terrify 使恐惧
+- terrific 极好的，绝妙的
+
+- tram 有轨电车
+- trim v. 整理 n. 整理 adj. 整齐的
 
 - sob 哭泣
 - sober 清醒的
@@ -298,8 +412,14 @@ worship 崇拜（宗教）
 - vigorous 充满活力的，果断的
 
 # 反义词
+- appoint 任命
+- disappoint 辜负
+
 - implicit 含蓄的
 - explicit 直白的
+
+- swell
+- shrink 收缩
 
 # 多义词
 object n. 物体；目标 v. 提出……作为反对的理由；反对
