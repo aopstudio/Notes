@@ -202,6 +202,9 @@ worship 崇拜（宗教）
 - assert 断言
 - asset 财产，资产
 
+- boast 自夸
+- foster 养育，培养
+
 - bold 大胆的，勇敢的
 - bald 秃顶的
 
@@ -223,6 +226,12 @@ worship 崇拜（宗教）
 
 - contract 合同
 - contradict 反驳，相反的
+
+- deficient adj. 缺乏d 
+- deficiency n. 缺乏，不足
+- sufficient adj. 足够的
+- sufficiency n. 足量，充足
+- efficiency 效率
 
 - dean 院长
 - deem 认为
