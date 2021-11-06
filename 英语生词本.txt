@@ -24,6 +24,7 @@ circus 马戏表演
 claim 声称，主张
 clarity 清晰
 clergyman 牧师
+cliff 悬崖，峭壁
 coalition 同盟
 cognitive 认知的
 compensating 补偿的，弥补的
@@ -74,6 +75,7 @@ facet 方面
 fanatic 狂热的
 fine tradition 优良传统
 folk 平民老百姓
+forge 创造，缔造
 formidable 可怕的，令人敬畏的，难对付的
 fringe 边缘
 furthermore 除此之外
@@ -117,6 +119,7 @@ phenomenon 现象
 pile 一堆
 plaintiff 原告
 plead 恳求
+porch 门厅，走廊
 proficient 精通的，熟练的
 prompt 迅速的
 prosperity 繁荣，富强
@@ -156,6 +159,7 @@ superstitious 迷信的 superstitions 迷信
 take one's own life 自杀
 tedious 冗长的，乏味的
 temporal 世俗的；暂存的，短暂的
+tenant 租客
 temporary 暂时的，临时的
 theological 神学的
 threshold 开端
@@ -188,6 +192,7 @@ worship 崇拜（宗教）
 
 - avenue 大道
 - venue 场地，场馆
+- revenue 收入，财政收入
 
 - bibliography 参考书目
 - biography 传记
@@ -210,6 +215,9 @@ worship 崇拜（宗教）
 
 - bypass 旁路
 - pass 通过
+
+- canal 运河
+- camel 骆驼
 
 - cattle 牛
 - castle 城堡
@@ -269,6 +277,7 @@ worship 崇拜（宗教）
 - efficient 有效率的
 - sufficient 充分的
 - proficient 精通的，熟练的
+- proficiency 精通，熟练
 
 - genuine 真诚的，诚恳的
 - genius 天才
@@ -280,6 +289,9 @@ worship 崇拜（宗教）
 
 - hamper 妨碍，阻碍，牵制
 - hammer 锤子
+
+- hose n. 水管 v.用水管冲洗
+- horse 马
 
 - heel 鞋跟
 - heal 治愈
@@ -298,6 +310,7 @@ worship 崇拜（宗教）
 
 - hobby 爱好
 - lobby 门厅，休息室，接待室
+- ferry 渡船，摆渡
 - lorry 卡车
 - heave 举起
 - weave 编织
@@ -310,6 +323,10 @@ worship 崇拜（宗教）
 - meditate 冥想
 - medieval 中世纪的，中古的
 
+- lame 瘸的
+- lane 农村小路，小道
+- tame 驯服
+
 - loyalty 忠诚，忠心
 - royalty 皇室成员；版税
 
@@ -321,6 +338,7 @@ worship 崇拜（宗教）
 
 - merge 合并
 - submerge 沉没
+- emerge 出现，浮现
 
 - narrow 狭窄的
 - shallow 浅的
@@ -332,6 +350,10 @@ worship 崇拜（宗教）
 
 - inference 推断
 - interference 干涉
+
+- impact  撞击；冲击力；冲撞；巨大影响
+- intact 完整无缺的
+- factor 因素
 
 - gracious 慈祥的
 - spacious 宽敞的
@@ -388,6 +410,7 @@ worship 崇拜（宗教）
 - shabby 破旧的
 - shady 成荫的；阴暗的；名声不好的
 
+- strap n. 皮带 v.捆扎
 - stride 大步走
 - stripe 条纹
 - strip 脱衣
@@ -431,6 +454,10 @@ object n. 物体；目标 v. 提出……作为反对的理由；反对
 
 tough adj. 艰苦的;艰难的;棘手的;严厉的;强硬的;无情的;坚强的;健壮的;能吃苦耐劳的;坚韧不拔的 n. 粗暴的人;暴徒;恶棍 v.坚持;忍受，忍耐 adv.强硬地;顽强地
     toughly adv. 坚强地，能吃苦耐劳地，固执地
+
+# 近义词
+- irony 讽刺，嘲弄
+- satire 讽刺，讽刺作品
 
 # 作文可用
 since ancient times 自古以来
