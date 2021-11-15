@@ -239,6 +239,12 @@ worship 崇拜（宗教）
 - contract 合同
 - contradict 反驳，相反的
 
+- convention 惯例，公约
+- conversion 转换
+
+- daily 日常的
+- dairy 乳品
+
 - deficient adj. 缺乏d 
 - deficiency n. 缺乏，不足
 - sufficient adj. 足够的
@@ -254,6 +260,9 @@ worship 崇拜（宗教）
 
 - dense 密集的
 - tense 拉紧的，紧张的
+
+- ditch 沟渠
+- pitch 音高；沥青
 
 - dose 剂量
 - doze 瞌睡
@@ -335,6 +344,10 @@ worship 崇拜（宗教）
 - lane 农村小路，小道
 - tame 驯服
 
+- layoff 解雇
+- layout 布局
+- outlet 出口
+
 - loyalty 忠诚，忠心
 - royalty 皇室成员；版税
 
@@ -362,6 +375,8 @@ worship 崇拜（宗教）
 - impact  撞击；冲击力；冲撞；巨大影响
 - intact 完整无缺的
 - factor 因素
+- sector 部门
+- section 部门
 
 - gracious 慈祥的
 - spacious 宽敞的
@@ -417,6 +432,10 @@ worship 崇拜（宗教）
 
 - shabby 破旧的
 - shady 成荫的；阴暗的；名声不好的
+
+- slam 猛烈的
+- slim 苗条的
+- slum 贫民窟
 
 - strap n. 皮带 v.捆扎
 - stride 大步走
