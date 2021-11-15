@@ -60,7 +60,7 @@ entail 使必须（做某事）；需要（做某事）
 equality 平等
 erode 削弱
     - get eroded 削弱 
-escalate 不断恶化，加剧
+escalate 不断恶化，加剧;逐步上升
 esthetic 美学的
 ethnic 种族的，少数民族的
 exceed v. 超出限制
@@ -139,6 +139,7 @@ retain 保持，持有
 revenue 财政收入，税收
 rigorous 严谨的
 ritual 例行公事
+scandal 丑闻
 self-interested 自私
 sermon 说教
 shaft 轴
@@ -206,6 +207,9 @@ worship 崇拜（宗教）
 
 - assert 断言
 - asset 财产，资产
+
+- bail 保释
+- bait 诱饵
 
 - boast 自夸
 - foster 养育，培养
@@ -281,6 +285,10 @@ worship 崇拜（宗教）
 
 - genuine 真诚的，诚恳的
 - genius 天才
+
+- glove 手套
+- shove 猛推，猛挤
+- stove 火炉
 
 - gown 女士礼服；法官长袍；手术服
 
