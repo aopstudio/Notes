@@ -3,6 +3,7 @@
 accuracy 精确度
 affirm 证实
 arena 体育场所，竞技场所
+amiable 和蔼的，亲切的
 as sb puts it 正如某人所说
 assimilate 童话
 at the thought of 一想起就
@@ -44,10 +45,12 @@ cope 对付，处理；斗篷
 counter 抵制
 crafty 狡猾的，诡计多端的
 dedication 敬业
+deem 认为，相信
 delicate 易碎的；精美的；微妙的，需要谨慎处理的
-dense 稠密的
+dense 稠密的 2
 diffuse 使（气体等）扩散；传播
 dilute 稀释
+discrete 分离的
 disperse 散开
 dispute 争论，辩论 n. adj.
 dissolve 溶解
@@ -62,7 +65,7 @@ entail 使必须（做某事）；需要（做某事）
 equality 平等
 erode 削弱
     - get eroded 削弱 
-escalate 不断恶化，加剧
+escalate 不断恶化，加剧;逐步上升
 esthetic 美学的
 ethnic 种族的，少数民族的
 exceed v. 超出限制
@@ -70,6 +73,7 @@ excerpt n. 摘录，节选
 excess n. 过多，过度
 excessive adj. 过多的
 exclusion 排斥
+expedition 探险，考察队
 extensively 广泛地
 extravagant 过度的
 fabulous 绝妙的
@@ -92,6 +96,7 @@ humiliate 侮辱
 idol 偶像
 illusory 虚幻的
 impartial 公正的，不偏不倚的
+incentive 刺激，诱因
 indefinitely 不明确地
 indulge 沉溺于，放任，纵容
 insult 侮辱
@@ -104,13 +109,16 @@ intuitive 直觉的
 justice 公正
 lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 live off 依赖（某人）生活; 靠（某一数目的钱）过活; 靠（某一收入来源）过活
+lucrative 赚大钱的
 mable 大理石
 mania 狂热
 mediate 调解
+monetary 金融的，货币的
 monopolizing 垄断，独占
 neglect 忽视
 off 离开
-outset 开始，开端
+outrage n. 盛怒，愤慨  v. 激起愤怒
+outset 开始，开端 2
 outskirts 郊区
 overlook 忽视
 overrate 高估
@@ -120,9 +128,12 @@ peer 同辈，同龄人
 perform experiment 做实验（固定用法）
 phenomenon 现象
 pile 一堆
+plagiarism 剽窃作品
 plaintiff 原告
 plead 恳求
 porch 门厅，走廊
+preach 鼓吹，宣传
+preside 主持
 proficient 精通的，熟练的
 prompt 迅速的
 prosperity 繁荣，富强
@@ -132,6 +143,7 @@ pursuit 兴趣，爱好；追求
 puritan 清教徒
 put down to sth 把（某事）归因于……
 put forward 提出，倡议
+quota 限额，定额
 racket 噪音；球拍
 rare bird （褒义）罕见、稀有的人或事物
 reasonably 理性地
@@ -143,6 +155,7 @@ retain 保持，持有
 revenue 财政收入，税收
 rigorous 严谨的
 ritual 例行公事
+scandal 丑闻
 self-interested 自私
 sermon 说教
 shaft 轴
@@ -152,6 +165,8 @@ so far迄今为止
 Spread to 扩散到
 staple 主要的；装订
 startling 令人吃惊的
+stiff 僵硬的
+stimulate 刺激，激励，促使
 stuff 材料
 subject sb to sth 使某人遭受、经历某事
 subsidy 财政补助，津贴
@@ -183,6 +198,9 @@ virtuosity 技艺
 worship 崇拜（宗教）
 
 # 形近词
+- absolute 绝对的
+- obsolete 过时的
+
 - arrogant 傲慢的
 - ignorant 无知的
 
@@ -210,6 +228,9 @@ worship 崇拜（宗教）
 
 - assert 断言
 - asset 财产，资产
+
+- bail 保释
+- bait 诱饵
 
 - boast 自夸
 - foster 养育，培养
@@ -299,10 +320,17 @@ worship 崇拜（宗教）
 - genuine 真诚的，诚恳的
 - genius 天才
 
+- glove 手套
+- shove 猛推，猛挤
+- stove 火炉
+
 - gown 女士礼服；法官长袍；手术服
 
 - grim 严峻的，忧愁的
 - grin 咧嘴笑
+
+- guild 协会，同业公会
+- guilt 内疚
 
 - hamper 妨碍，阻碍，牵制
 - hammer 锤子
@@ -385,6 +413,10 @@ worship 崇拜（宗教）
 - gracious 慈祥的
 - spacious 宽敞的
 
+- obedience 服从
+- obsolete 过时的
+- obesity 肥胖
+
 - oval 卵形的，椭圆形的
 - oral 口头的
 
@@ -394,6 +426,9 @@ worship 崇拜（宗教）
 - position 位置
 - disposition 性情
 - proposition 提议
+
+- pile 一堆
+- tile 瓦片
 
 - pilgrim 朝圣者
 - plagiarism 剽窃，抄袭
@@ -425,6 +460,9 @@ worship 崇拜（宗教）
 - pin 大头针
 - spin 旋转
 
+- quota 定额，配额
+- quote 引用
+
 - resultant 因此而产生的，后果
 - redundant 多余的，过剩的
 - reluctant 勉强的，不情愿的
@@ -444,6 +482,9 @@ worship 崇拜（宗教）
 - slam 猛烈的
 - slim 苗条的
 - slum 贫民窟
+
+- sniff
+- stiff 僵硬的
 
 - strap n. 皮带 v.捆扎
 - stride 大步走
