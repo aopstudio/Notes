@@ -2,6 +2,7 @@
 
 accuracy 精确度
 affirm 证实
+arena 体育场所，竞技场所
 as sb puts it 正如某人所说
 assimilate 童话
 at the thought of 一想起就
@@ -91,6 +92,7 @@ idol 偶像
 illusory 虚幻的
 impartial 公正的，不偏不倚的
 indefinitely 不明确地
+indulge 沉溺于，放任，纵容
 insult 侮辱
 integrity 诚实
 intensive 加强的
@@ -124,6 +126,7 @@ proficient 精通的，熟练的
 prompt 迅速的
 prosperity 繁荣，富强
 provoke 引起，刺激
+prudent 谨慎的；精打细算的
 pursuit 兴趣，爱好；追求
 puritan 清教徒
 put down to sth 把（某事）归因于……
@@ -279,6 +282,10 @@ worship 崇拜（宗教）
 - excerpt 摘录
 - expect 专家
 
+- exhibit 展览
+- extinction 灭绝
+- inhibit 抑制
+
 - exploit 充分利用，压榨
 - explode 爆炸
 - explore 探索
@@ -319,6 +326,9 @@ worship 崇拜（宗教）
 - reel 卷轴
 - rear 后面
 
+- heroin 海洛因
+- heroine 女英雄
+
 - idiot 笨蛋
 - idiom 成语
 
@@ -334,6 +344,7 @@ worship 崇拜（宗教）
 
 - immediately 立刻，马上
 - intermediate 中间的
+- intimate 亲密的
 - intimidate 威胁，恐吓
 - humiliate 羞辱
 - mediate 调解
@@ -413,6 +424,7 @@ worship 崇拜（宗教）
 - prosecute 控告，起诉
 - persecute 迫害
 - execute 处决
+- consective 连续不断的
 
 - provision 提供，供应；条款，规定
 - vision 视野
@@ -423,6 +435,9 @@ worship 崇拜（宗教）
 - resultant 因此而产生的，后果
 - redundant 多余的，过剩的
 - reluctant 勉强的，不情愿的
+
+- rigorous 谨慎的，细致的
+- vigorous 充满活力的；果断的
 
 - sack 麻袋
 - sake 目的，理由，好处
