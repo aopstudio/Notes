@@ -4,8 +4,9 @@ accuracy 精确度
 affirm 证实
 arena 体育场所，竞技场所
 amiable 和蔼的，亲切的
+articulate 清晰明确地表达
 as sb puts it 正如某人所说
-assimilate 童话
+assimilate 吸收，同化
 at the thought of 一想起就
 atmosphere 氛围
 autonomy 人身自由
@@ -20,7 +21,7 @@ brisk 轻快的，生机勃勃的
 bypass 旁路
 ceiling 天花板
 charter 宪章；特权
-chronic 长期的 —— temporary 暂时的
+chronic 长期的，慢性的 —— temporary 暂时的
 civility 文明礼仪
 circus 马戏表演
 claim 声称，主张
@@ -55,7 +56,7 @@ disperse 散开
 dispute 争论，辩论 n. adj.
 dissolve 溶解
 disproportionately 不成比例地
-domestic 家庭的，内部的
+domestic 家庭的，内部的；国内的；驯养的
 durable 长期的 —— temporary 暂时的
 elapse v. 时间流逝
 elaborate 详细阐述
@@ -77,7 +78,7 @@ expedition 探险，考察队
 extensively 广泛地
 extravagant 过度的
 fabulous 绝妙的
-facet 方面
+facet 方面，平面
 fanatic 狂热的
 fine tradition 优良传统
 folk 平民老百姓
@@ -107,8 +108,10 @@ intermittent 断断续续的
 intimidate 威胁，恐吓
 intuitive 直觉的
 justice 公正
+    - injustice 不公正
 lapse n.失误，过失；（时间）流逝 v. 背弃，放弃（宗教信仰）
 live off 依赖（某人）生活; 靠（某一数目的钱）过活; 靠（某一收入来源）过活
+lounge 休息室
 lucrative 赚大钱的
 mable 大理石
 mania 狂热
@@ -130,6 +133,7 @@ phenomenon 现象
 pile 一堆
 plagiarism 剽窃作品
 plaintiff 原告
+    - defendant 被告
 plead 恳求
 porch 门厅，走廊
 preach 鼓吹，宣传
@@ -137,7 +141,7 @@ preside 主持
 proficient 精通的，熟练的
 prompt 迅速的
 prosperity 繁荣，富强
-provoke 引起，刺激
+provoke 引起，刺激，招惹
 prudent 谨慎的；精打细算的
 pursuit 兴趣，爱好；追求
 puritan 清教徒
@@ -150,6 +154,7 @@ reasonably 理性地
 redundant 多余的
 regime 统治制度，政权
 reluctant 不情愿的
+* resilient 可迅速恢复的，有弹性的
 restore 恢复
 retain 保持，持有
 revenue 财政收入，税收
@@ -159,22 +164,26 @@ scandal 丑闻
 self-interested 自私
 sermon 说教
 shaft 轴
+shuttle 穿梭
 since ancient times 自古以来
 slope 斜面
 so far迄今为止
+speculate 推测
 Spread to 扩散到
 staple 主要的；装订
 startling 令人吃惊的
 stiff 僵硬的
 stimulate 刺激，激励，促使
 stuff 材料
+stun 震惊
 subject sb to sth 使某人遭受、经历某事
 subsidy 财政补助，津贴
-succinctly 简洁地
+* succinctly 简洁地
 surge n. 急剧上升 v. 奔腾，波动
 sustain 维持；支撑
 sum up 总结
 superstitious 迷信的 superstitions 迷信
+supervise 监管
 take one's own life 自杀
 tedious 冗长的，乏味的
 temporal 世俗的；暂存的，短暂的
@@ -183,14 +192,13 @@ temporary 暂时的，临时的
 theological 神学的
 threshold 开端
 toil 辛勤的 adj.  辛苦劳动 n.  
-trait 特征
+2 trait 特征
 turn around 使转身；使好转，扭转
 turn out 证明是，结果是
-trait 特征，个人特征
 trivial 琐碎的
 unaccountably 莫名其妙，没有原因的
 unfold 逐渐展现，表露，阐明
-vague 模糊的
+vague 模糊的，含糊其辞的
 valuing 尊重，重视
 venue 场馆
 Vigorously advocate 大力提倡
@@ -208,6 +216,10 @@ worship 崇拜（宗教）
 - aggregate 综合
 - degenerate 堕落
 
+- ample 足够的，丰裕的
+- staple 主要的；装订
+- example
+
 - appoint 任命
 - appointment 约会
 - disappoint 辜负
@@ -222,6 +234,11 @@ worship 崇拜（宗教）
 - abrupt 突然的；不连贯的；鲁莽的
 - corrupt 贪污的，腐败的
 - bankrupt 破产
+
+- bracket 括号
+- cricket 蟋蟀 板球
+- racket 球拍；喧哗，吵闹
+- rack 架子
 
 - ago 之前
 - ego 自尊心
@@ -266,6 +283,10 @@ worship 崇拜（宗教）
 - daily 日常的
 - dairy 乳品
 
+- decline 下降
+- incline 倾斜
+    倾斜近义词：slope, tilt, lean（斜靠）,tend（倾向）
+
 - deficient adj. 缺乏d 
 - deficiency n. 缺乏，不足
 - sufficient adj. 足够的
@@ -281,6 +302,11 @@ worship 崇拜（宗教）
 
 - dense 密集的
 - tense 拉紧的，紧张的
+
+- detain 扣押，扣留
+- retain 保持，持有
+- obtain 获得
+- sustain 维持，支撑
 
 - ditch 沟渠
 - pitch 音高；沥青
@@ -314,9 +340,17 @@ worship 崇拜（宗教）
 - effective 有效果的，起作用的
 - efficient 有效率的
 - sufficient 充分的
-- proficient 精通的，熟练的
-- proficiency 精通，熟练
+    - insufficient 不充分的
+- deficient 缺乏的
+    - deficiency 缺乏
+- proficient 精通的，熟练的（记忆法：pro 专业的。专业人员精通某项业务）
+    - proficiency 精通，熟练
 
+- gasp 喘息
+- grab 抢夺，狠抓（抢夺财物）
+- grasp 把握，抓住（机会）
+
+- generous 慷慨的
 - genuine 真诚的，诚恳的
 - genius 天才
 
@@ -393,6 +427,9 @@ worship 崇拜（宗教）
 - submerge 沉没
 - emerge 出现，浮现
 
+- moderate 适中的
+- modest 谦虚的
+
 - narrow 狭窄的
 - shallow 浅的
 - shadow 影子
@@ -432,6 +469,10 @@ worship 崇拜（宗教）
 
 - pilgrim 朝圣者
 - plagiarism 剽窃，抄袭
+- conspiracy 共谋，阴谋
+
+- porch 门厅，走廊
+- torch 火炬
 
 - predict 预言
 - verdict 裁定，判断
@@ -443,6 +484,10 @@ worship 崇拜（宗教）
 - plunge 猛跌
 - plug 塞子
 - sponge 海绵
+
+- prompt 迅速的
+- tempt 诱惑，引诱
+- tend 倾向
 
 - property 财产
 - prosperity 繁荣，兴旺
@@ -457,6 +502,10 @@ worship 崇拜（宗教）
 - provision 提供，供应；条款，规定
 - vision 视野
 
+- prove 证明
+- provoke 引起，刺激
+- prudent 谨慎的；精打细算的
+
 - pin 大头针
 - spin 旋转
 
@@ -469,6 +518,7 @@ worship 崇拜（宗教）
 
 - rigorous 谨慎的，细致的
 - vigorous 充满活力的；果断的
+- gorgeous 华丽的
 
 - sack 麻袋
 - sake 目的，理由，好处
@@ -483,19 +533,38 @@ worship 崇拜（宗教）
 - slim 苗条的
 - slum 贫民窟
 
-- sniff
+- sniff 嗅
+- staff 职员，员工
 - stiff 僵硬的
+- stuff 材料，原料
+- tariff 关税
+- plaintiff 原告
 
 - strap n. 皮带 v.捆扎
 - stride 大步走
 - stripe 条纹
 - strip 脱衣
 
+- subsidy 补贴
+- substantial 大量的
+- substance 物质
+
+- superstitious 迷信的 
+    - superstition 迷信
+- supervise 监管
+
 - terrify 使恐惧
 - terrific 极好的，绝妙的
 
+- trace 踪迹；追踪
+- trait 特征
+
 - tram 有轨电车
 - trim v. 整理 n. 整理 adj. 整齐的
+
+- transparent 透明的
+- transient 转瞬即逝的；短暂的
+- transmit 发送，传送
 
 - sob 哭泣
 - sober 清醒的
@@ -514,10 +583,16 @@ worship 崇拜（宗教）
 - appoint 任命
 - disappoint 辜负
 
+- impartial 公正的，不偏不倚的
+- partial 部分的，不完整的；片面的，有偏见的
+
 - implicit 含蓄的
 - explicit 直白的
 
-- swell
+- opaque 不透明的
+- transparent 透明的
+
+- swell 膨胀
 - shrink 收缩
 
 # 多义词
@@ -534,6 +609,13 @@ tough adj. 艰苦的;艰难的;棘手的;严厉的;强硬的;无情的;坚强的
 # 近义词
 - irony 讽刺，嘲弄
 - satire 讽刺，讽刺作品
+
+- stimulate 刺激，激发，激励
+    - stimulus n. 刺激举措
+- provoke 刺激；招惹
+
+- legacy 遗产
+- heritage 遗产
 
 # 作文可用
 since ancient times 自古以来
