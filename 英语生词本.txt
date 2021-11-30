@@ -50,6 +50,7 @@ deem 认为，相信
 delicate 易碎的；精美的；微妙的，需要谨慎处理的
 dense 稠密的 2
 diffuse 使（气体等）扩散；传播
+dignity 尊贵，高贵，庄严
 dilute 稀释
 discrete 分离的
 disperse 散开
@@ -264,6 +265,10 @@ worship 崇拜（宗教）
 - cattle 牛
 - castle 城堡
 
+- cherish 珍惜
+- relish 享受，品味
+- perish 死亡，湮灭
+
 - chimney 烟囱
 - kidney 肾脏
 
@@ -308,6 +313,11 @@ worship 崇拜（宗教）
 - obtain 获得
 - sustain 维持，支撑
 
+- dignity 尊贵，高贵，庄严
+- indignity 侮辱，轻蔑
+- indignation 愤慨，愤怒
+- indignant adj.
+
 - ditch 沟渠
 - pitch 音高；沥青
 
@@ -316,6 +326,9 @@ worship 崇拜（宗教）
 
 - brim 边缘 
 - grim 严酷的，无情的；令人沮丧的；讨厌的 
+
+- engage 从事; 聘用; 订婚
+- gauge 估算
 
 - estate 财产
 - estimate 估计
