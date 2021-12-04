@@ -162,7 +162,7 @@ restore 恢复
 retain 保持，持有
 revenue 财政收入，税收
 rigorous 严谨的
-ritual 例行公事
+ritual 例行公事，老规矩；仪式
 scandal 丑闻
 self-interested 自私
 sermon 说教
@@ -272,7 +272,7 @@ worship 崇拜（宗教）
 - cattle 牛
 - castle 城堡
 
-- cherish 珍惜
+- cherish 珍惜，珍爱
 - relish 享受，品味
 - perish 死亡，湮灭
 
