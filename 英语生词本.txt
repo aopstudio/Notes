@@ -62,6 +62,7 @@ elapse v. 时间流逝
 elaborate 详细阐述
 elicit 引出
 empirical 经验主义的
+endorse 赞同
 entail 使必须（做某事）；需要（做某事）
 equality 平等
 erode 削弱
@@ -102,7 +103,7 @@ indefinitely 不明确地
 indulge 沉溺于，放任，纵容
 insult 侮辱
 integrity 诚实
-intensive 加强的
+2 intensive 加强的；密集的
 interference 干涉
 intermittent 断断续续的
 intimidate 威胁，恐吓
@@ -115,6 +116,7 @@ lounge 休息室
 lucrative 赚大钱的
 mable 大理石
 mania 狂热
+manifest 显露，体现
 mediate 调解
 monetary 金融的，货币的
 monopolizing 垄断，独占
@@ -190,7 +192,7 @@ temporal 世俗的；暂存的，短暂的
 tenant 租客
 temporary 暂时的，临时的
 theological 神学的
-threshold 开端
+threshold 门槛；开端
 toil 辛勤的 adj.  辛苦劳动 n.  
 2 trait 特征
 turn around 使转身；使好转，扭转
@@ -234,6 +236,11 @@ worship 崇拜（宗教）
 - abrupt 突然的；不连贯的；鲁莽的
 - corrupt 贪污的，腐败的
 - bankrupt 破产
+
+- boast 自夸，夸耀
+- boost 提高，增长，激励
+- bolster 加强，改善
+- foster 培养，养育
 
 - bracket 括号
 - cricket 蟋蟀 板球
@@ -515,6 +522,10 @@ worship 崇拜（宗教）
 - resultant 因此而产生的，后果
 - redundant 多余的，过剩的
 - reluctant 勉强的，不情愿的
+
+- rifle 步枪
+- trifle 小事，琐事
+- trivial 琐碎的，微不足道的
 
 - rigorous 谨慎的，细致的
 - vigorous 充满活力的；果断的
