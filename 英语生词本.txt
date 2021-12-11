@@ -15,7 +15,7 @@ be punished by the law 受到法律惩罚
 bear in mind 牢记在心
 besides 除此之外
 better still 更好的是
-bewilder 使迷惑，使糊涂
+2 bewilder 使迷惑，使糊涂
 bolt n.门栓，螺栓 v.马受惊脱缰
 brisk 轻快的，生机勃勃的
 bypass 旁路
@@ -132,6 +132,7 @@ overestimate 高估
 pass away 去世
 peer 同辈，同龄人
 perform experiment 做实验（固定用法）
+perplex 使困惑
 phenomenon 现象
 pile 一堆
 plagiarism 剽窃作品
@@ -365,6 +366,9 @@ worship 崇拜（宗教）
     - deficiency 缺乏
 - proficient 精通的，熟练的（记忆法：pro 专业的。专业人员精通某项业务）
     - proficiency 精通，熟练
+
+- flatter 奉承
+- scatter 散播
 
 - gasp 喘息
 - grab 抢夺，狠抓（抢夺财物）
