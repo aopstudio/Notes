@@ -581,6 +581,9 @@ worship 崇拜（宗教）
     - superstition 迷信
 - supervise 监管
 
+- swear 诅咒
+- sweat 出汗
+
 - terrify 使恐惧
 - terrific 极好的，绝妙的
 
