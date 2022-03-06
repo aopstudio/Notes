@@ -1,6 +1,7 @@
 public class 算法{
 
     int[] a=new int[]{4,1,3,5,8,7};
+    // 冒泡排序
     void bubbleSort(int[] a){
         for(int i=0;i<a.length;i++){
             for(int j=1;j<a.length-i;j++){
@@ -12,6 +13,7 @@ public class 算法{
             }
         }
     }
+    // 直接插入排序
     void insertSort(int[] a){
         for(int i=1;i<a.length;i++){
             int low=a[i];
@@ -23,6 +25,7 @@ public class 算法{
             a[leftIndex]=low;
         }
     }
+    // 选择排序
     void selectSort(int[] a){
         for(int i=0;i<a.length;i++){
             int low=i;
@@ -38,6 +41,7 @@ public class 算法{
             }
         }
     }
+    // 快速排序
     void quickSort(int[] a,int low,int high){
         if(low>high){
             return;
@@ -61,7 +65,7 @@ public class 算法{
         quickSort(a, low, i-1);
         quickSort(a, i+1, high);
     }
-
+    // 归并排序
     void mergeSort(int[] a,int low,int high,int[] temp){
         if(low>high){
             return;
