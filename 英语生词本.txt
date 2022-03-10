@@ -607,6 +607,10 @@ worship 崇拜（宗教）
 - tug 猛拉
 - mug 大柄杯子
 
+- vibrate 颤动
+- violate 违背
+- ventilate 通风
+
 - vicious 残暴的，恶毒的
 - vigorous 充满活力的，果断的
 
