@@ -961,7 +961,11 @@ SRTF是抢占式的，有时也被称为抢占式的SJF
 ![sheet3](https://img-blog.csdn.net/20180121005423134?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGllbWlueWFvMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ### Three-Level Scheduling 三级调度
-![tls](http://assets.processon.com/chart_image/5c53a8f1e4b056ae2a03252d.png)
+高级调度，就是按某种算法在外存中处于后备队列的作业中挑选一个(或多个)作业，给它分配内存等必要资源，并建立相应的进程(建立PCB)，以使它(们)获得竞争处理机的权利。
+
+中级调度，就是决定将哪个挂起状态的进程从外存重新调回内存。
+
+低级调度的主要任务是按照某种规则从就绪队列中选取一个进程，将CPU分配给它。
 
 ## CPU Scheduling 2
 重点讨论
