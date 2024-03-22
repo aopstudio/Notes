@@ -16,14 +16,14 @@ function delay(ms) {
 }
 
 async function printSequentially() {
-await delay(1000);
-console.log(1);
+    await delay(1000);
+    console.log(1);
 
-await delay(1000);
-console.log(2);
+    await delay(1000);
+    console.log(2);
 
-await delay(1000);
-console.log(3);
+    await delay(1000);
+    console.log(3);
 }
   
 printSequentially();
