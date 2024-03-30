@@ -1,3 +1,58 @@
+# Django
+## 中间件
+中间件(middleware)允许您在一个浏览器的请求在到达Django视图之前处理它，以及在视图返回的响应到达浏览器之前处理这个响应。本文着重分析Django中间件的工作原理和应用场景，介绍如何自定义中间件并提供一些示例。
+
+HTTP Web服务器工作原理一般都是接收用户发来的请求(request), 然后给出响应(response)。Django也不例外，其一般工作方式是接收request请求和其它参数，交由视图(view)处理，然后给出它的响应(response): 渲染过的html文件或json格式的数据。然而在实际工作中Django并不是接收到request对象后，马上交给视图函数或类(view)处理，也不是在view执行后立马把response返回给用户。**一个请求在达到视图View处理前需要先经过一层一层的中间件处理，经过View处理后的响应也要经过一层一层的中间件处理才能返回给用户**。
+
+中间件(Middleware)在整个Django的request/response处理机制中的角色如下所示：
+
+```py
+HttpRequest -> Middleware -> View -> Middleware -> HttpResponse
+```
+
+中间件常用于权限校验、限制用户请求、打印日志、改变输出内容等多种应用场景
+
+注意：装饰器也经常用于用户权限校验。但与装饰器不同，中间件对Django的输入或输出的改变是全局的。比如@login_required装饰器仅作用于单个视图函数。如果你希望实现全站只有登录用户才能访问，编写一个中间件是一个更好的解决方案。
+
+## Django的中间件执行顺序
+当你在settings.py注册中间件时一定要要考虑中间件的执行顺序，中间件在request到达view之前是从上向下执行的，在view执行完后返回response过程中是从下向上执行的，如下图所示。举个例子，如果你自定义的中间件有依赖于request.user，那么你自定义的中间件一定要放在AuthenticationMiddleware的后面。
+
+## 自定义中间件
+自定义中间件你首先要在app所属目录下新建一个文件middleware.py, 添加好编写的中间件代码，然后在项目settings.py中把它添加到MIDDLEWARE列表进行注册，添加时一定要注意顺序。
+
+Django提供了两种编写自定义中间件的方式：函数和类，基本框架如下所示:
+
+### 函数
+```py
+def simple_middleware(get_response):
+    # 一次性设置和初始化
+    def middleware(request):
+        # 请求在到达视图前执行的代码
+        response = get_response(request)
+        # 响应在返回给客户端前执行的代码
+        return response
+    return middleware
+```
+当请求从浏览器发送到服务器视图时，将执行response = get_response(request)该行之前的所有代码。当响应从服务器返回到浏览器时，将执行response = get_response(request)此行之后的所有内容。
+
+那么这条分界线respone = get_response(request)做什么的？简而言之，它将调用列表中的下一个中间件。如果这是最后一个中间件，则将调用该视图。
+
+### 使用类
+```py
+class SimpleMiddleware:
+    def __init__(self, get_response):
+        # 一次性设置和初始化
+        self.get_response = get_response
+        
+    def __call__(self, request):
+        # 视图函数执行前的代码
+        response = self.get_response(request)
+        # 视图函数执行后的代码
+        return response
+```
+
+# Python语法
+
 ## python标准数据类型，哪些是可变的哪些不可变
 不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
 可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。
@@ -558,8 +613,6 @@ def hello():
 4.类中变量__name、_value的区别
 5.Dict和List查询的效率差别及原因
 
-Django请求的流程
-Django的中间件了解吗
 python类的内置方法有哪些，调用顺序如何，什么作用？
 异常捕获
 垃圾回收
@@ -621,8 +674,16 @@ django
 transformers
 requests：发送网络请求
 
-# python多线程的缺点（完全不知道）
+# python多线程的缺点
+由于全局解释器锁的存在，GIL导致PYTHON 无法使用到计算机的多核，仅能使用单核
+
+如果是IO密集型应用，可以采用多进程+协程的方式
 # 线程和协程的区别
+线程是操作系统中任务调度的基本单位，线程切换需要从用户进入内核态再返回用户态
+
+协程是比线程更小的单位，相当于用户级别的线程，一个线程内可以包含多个协程，协程切换不需要进入内核态
+
+一个线程内的多个协程是串行执行的，不能利用多核，所以，显然，协程不适合计算密集型的场景。协程适合I/O 密集型任务。
 # 文件操作（打开、修改、保存）使用什么方法
 open(,'r')
 open(,'w')
