@@ -67,7 +67,7 @@ public class 算法{
     }
     // 归并排序
     void mergeSort(int[] a,int low,int high,int[] temp){
-        if(low>high){
+        if(low>=high){
             return;
         }
         int mid=(low+high)/2;

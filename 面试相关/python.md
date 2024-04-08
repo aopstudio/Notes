@@ -818,3 +818,22 @@ instance2 = MyClass()
 
 print(instance1 is instance2)  # 输出: True
 ```
+
+# 装饰器
+```py
+def my_fun(message)
+    print(f'Hello! {message}')
+
+my_fun('Jack')
+
+def decorator(fn):
+    def wrapper(*args,**kwargs):
+        print('Func start')
+        result = fn(*args,**kwargs)
+        print('Func end')
+        return result
+    return wrapper
+
+f1 = decorator(my_fun)
+f1()
+```
