@@ -1,3 +1,9 @@
+# python中的可变位置参数和可变关键字参数之间的区别
+可变位置参数通常命名为*args，它会自动将对应位置所填的所有位置参数封包为一个元组，在函数中如果打印args这个变量，打印出来的就是一个元组
+
+可变位置参数通常命名为**kwargs，它会自动将对应位置所填的所有关键词参数封包为一个字典，在函数中如果打印kwargs这个变量，打印出来的就是一个字典
+
+
 # Django
 ## 中间件
 中间件(middleware)允许您在一个浏览器的请求在到达Django视图之前处理它，以及在视图返回的响应到达浏览器之前处理这个响应。本文着重分析Django中间件的工作原理和应用场景，介绍如何自定义中间件并提供一些示例。
@@ -1058,4 +1064,110 @@ list2=[4,5,6]
 3. 使用切片:
 ```python
 list1[len(list1):len(list1)]=list2
+```
+
+# 传统方法实现单例模式
+```python
+class Singleton:
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+```
+
+# 装饰器实现单例模式
+## 为类加装饰器
+为类加装饰器的效果可能是修改类属性，修改类方法等。
+### 修改类属性的类装饰器
+```py
+def decorater(cls):             # 传入一个类即cls
+    cls.num_of_animals = 10     # 设置一个类属性
+    return cls                  # 返回这个被装饰过的类
+
+@decorater
+class animal:
+    pass
+# 这就完成了对类的装饰啦
+
+A = animal()  
+# 上面这行代码相当于在运行a = decorater(animal) 运行的结果
+# 就是返回了一个被装饰过的新的cls，因此新的cls有了新的属性，我们就可以调用
+# 这个num_of_animals的属性啦。
+```
+### 设置类方法的装饰器
+```py
+def decorater(func):         
+    def wrapper(cls):
+        cls.num_of_animals = 10                   
+        cls.f1 = func    
+    	# 这里将传入的func即printd作为类的f1函数，我还不清楚怎么设置有self传入的函数。也可能不行
+        return cls
+    return wrapper
+
+@decorater(printd)
+class animal:
+    pass
+
+def printd(*args):
+    print('this is a function')
+    
+A = animal()
+A.f1()   # 是可以调用的哦
+# 运行结果：this is a function
+```
+### 重写类的装饰器
+也可以完全重写一个类
+```py
+def decorater(cls):
+	class wrapper:
+		pass     # 这里面可以重写类
+	return wrapper
+	
+@decorater
+class animal:
+	pass
+# 这样是可以的，但是一般来说是没必要这样写哈。
+```
+
+## 2 类装饰器实现单例模式
+```py
+def singleton(cls):
+    instances = {}
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    return get_instance
+
+@singleton
+class MyClass:
+    def __init__(self):
+        pass
+
+# 使用
+instance1 = MyClass()
+instance2 = MyClass()
+
+print(instance1 is instance2)  # 输出: True
+```
+
+# 装饰器
+```py
+def my_fun(message)
+    print(f'Hello! {message}')
+
+my_fun('Jack')
+
+def decorator(fn):
+    def wrapper(*args,**kwargs):
+        print('Func start')
+        result = fn(*args,**kwargs)
+        print('Func end')
+        return result
+    return wrapper
+
+f1 = decorator(my_fun)
+f1()
 ```
