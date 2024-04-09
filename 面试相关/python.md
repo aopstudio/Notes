@@ -579,14 +579,19 @@ def hello():
 ```
 # python中的GIL（全局解释器锁）
 ## GIL 全局解释器锁
+GIL虽然从设计的出发点就是考虑到线程安全，但这种线程安全是粗粒度的线程安全，即不需要程序员自己对线程进行加锁处理（同理，所谓细粒度就是指程序员需要自行加、解锁来保证线程安全，典型代表是 Java , 而 CPthon 中是粗粒度的锁，即语言层面本身维护着一个全局的锁机制,用来保证线程安全）。
+
 如何解决线程安全问题？CPython 解释器使用了加锁的方法。每个进程有一把锁，启动线程先加锁，结束线程释放锁。打个比方，进程是一个厂房，厂房大门是开着的，门内有锁，工人进入大门后可以在内部上锁。厂房里面有 10 个车间对应 10 个线程，每个 CPU 就是一个工人。GIL（Global Interpreter Lock）全局锁就相当于厂房规定：工人要到车间工作，从厂房大门进去后要在里面反锁，完成工作后开锁出门，下一个工人再进门上锁。也就是说，任意时刻厂房里只能有一个工人，但这样就保证了工作的安全性，这就是 GIL 的原理。当然了，GIL 的存在有很多其它益处，包括简化 CPython 解释器和大量扩展的实现。
 
 根据上面的例子可以看出 GIL 实现了线程操作的安全性，但多线程的效率被大打折扣，一个工厂里只能有一个工人干活，很难想象。这也是 David Beazley（《Python 参考手册》和《Python Cookbook》的作者）说 “Python 线程毫无用处” 的原因。
 
 注意，GIL 不是语言特性，而是解释器的设计特点，有些 Python 解释器例如 JPython 就没有 GIL ，除了 Python 其它语言也有 GIL 设计，例如 Ruby 。
 
-## 多进程来解决
-尽管一个进程中只能使用一个线程，但可以创建多个进程来利用CPU的多核
+## 如何避免GIL的影响
+
+1. 在以IO操作为主的IO密集型应用中，多线程和多进程的性能区别并不大，原因在于即使在Python中有GIL锁的存在，由于线程中的IO操作会使得线程立即释放GIL，切换到其他非IO线程继续操作，提高程序执行效率。相比进程操作，线程操作更加轻量级，线程之间的通讯复杂度更低，建议使用多线程。
+
+2. 如果是计算密集型的应用，尽量使用多进程或者协程来代替多线程
 
 
 # *args，**kwargs区别
@@ -602,23 +607,354 @@ def hello():
 
 对于长度为1~20的元组，即使它们不在被使用，它们的空间也不会立刻还给系统，而是留待未来使用。这意味着当未来需要一个同样大小的新的元组时，我们不再需要向操作系统申请一块内存来存放数据，因为我们已经有了预留的空间。
 
+# python面向对象的常用方法
+## Python中的__init__和__new__
+__init__函数并不是真正意义上的构造函数，__init__方法做的事情是在对象创建好之后初始化变量。真正创建实例的是__new__方法
 
-7.python new和init区别
+实例化了一个Person对象，可以看到__new__和__init__都被调用了。__new__方法用于创建对象并返回对象，当返回对象时会自动调用__init__方法进行初始化。
+init是在类实例创建之后调用，而 new方法正是创建这个类实例的方法。
+__new__方法是类方法，而__init__是实例方法。
+
+### 用__new__方法实现单例模式
+```py
+class Singleton(object):
+    _instance = None
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = object.__new__(cls, *args, **kwargs)
+        return cls._instance
+
+s1 = Singleton()
+s2 = Singleton()
+print(s1)
+print(s2) 
+``` 
+
+### 用__new__方法实现简单工厂模式
+```py
+class Fruit(object):
+    def __init__(self):
+        pass
+
+    def print_color(self):
+        pass
+
+class Apple(Fruit):
+    def __init__(self):
+        pass
+
+    def print_color(self):
+        print("apple is in red")
+
+class Orange(Fruit):
+    def __init__(self):
+        pass
+
+    def print_color(self):
+        print("orange is in orange")
+
+class FruitFactory(object):
+    fruits = {"apple": Apple, "orange": Orange}
+
+    def __new__(cls, name):
+        if name in cls.fruits.keys():
+            return cls.fruits[name]()
+        else:
+            return Fruit()
+
+fruit1 = FruitFactory("apple")
+fruit2 = FruitFactory("orange")
+fruit1.print_color()    
+fruit2.print_color()    
+```
+## __call__方法
+python的__call__()是一种magic method，在类中实现这一方法可以使该类的实例（对象）像函数一样被调用。默认情况下该方法在类中是没有被实现的。使用callable()方法可以判断某对象是否可以被调用。
+
+python中__call__()方法的作用其实是把一个类的实例化对象变成了可调用对象，也就是说把一个类的实例化对象变成了可调用对象，只要类里实现了__call__()方法就行。如当类里没有实现__call__()时，此时的对象p 只是个类的实例，不是一个可调用的对象，当调用它时会报错：‘Person’ object is not callable.
+```py
+class People(object):
+    def __init__(self,name):
+        self.name=name
+
+    def __call__(self):
+        print("hello "+self.name)
+
+a = People('无忌！')
+a.__call__()       # 调用方法一
+a()                # 调用方法二
+```
+输出
+```py
+hello 无忌！
+hello 无忌！
+```
+
+## __str__方法
+python的__str__()是一个特殊方法，它允许自定义对象的字符串表示形式。
+
+使用__str__()方法可以提高代码的可读性和调试过程。它允许自定义对象的字符串表示，使其更容易理解。而不使用__str__()时，将得到默认的字符串表示，通常不够明确。
+
+不使用__str__方法
+```py
+
+class Student(object):
+    def __init__(self,id,name,age):
+        self.id=id
+        self.name=name
+        self.age=age
+ 
+s=Student(111,"Bob",18)
+print(s)
+```
+输出结果：<main.Student object at 0x0362EBF0>
+
+使用__str__方法
+```py
+
+class Student(object):
+    def __init__(self,id,name,age):
+        self.id=id
+        self.name=name
+        self.age=age
+ 
+    def __str__(self):
+        return "学号:{}--姓名:{}--年龄{}".format(self.id,self.name,self.age)
+    
+s=Student(111,"Bob",18)
+print(s)
+```
+输出结果：学号:111--姓名:Bob--年龄18
+
+## 如何调用父类（super）
+
+# 类方法，实例方法，静态方法
+## 实例方法
+通常情况下，在类中定义的方法默认都是实例方法
+
+实例方法最大的特点就是，它最少也要包含一个 self 参数，用于绑定调用此方法的实例对象（Python 会自动完成绑定）。实例方法通常会用类对象直接调用
+
+Python 也支持使用类名调用实例方法，但此方式需要手动给 self 参数传值
+
+## 类方法
+Python 类方法和实例方法相似，它最少也要包含一个参数，只不过类方法中通常将其命名为 cls，Python 会自动将类本身绑定给 cls 参数（注意，绑定的不是类对象）。也就是说，我们在调用类方法时，无需显式为 cls 参数传参。
+
+和实例方法最大的不同在于，类方法需要使用＠classmethod修饰符进行修饰
+
+类方法推荐使用类名直接调用，当然也可以使用实例对象来调用（不推荐）
+
+## 静态方法
+静态方法，其实就是我们学过的函数，和函数唯一的区别是，静态方法定义在类这个空间（类命名空间）中，而函数则定义在程序所在的空间（全局命名空间）中。
+
+静态方法没有类似 self、cls 这样的特殊参数，因此 Python 解释器不会对它包含的参数做任何类或对象的绑定。也正因为如此，类的静态方法中无法调用任何类属性和类方法。
+
+静态方法需要使用＠staticmethod修饰
+
+静态方法的调用，既可以使用类名，也可以使用类对象
+
+## 类方法和静态方法的区别
+
+1、类方法用在模拟java定义多个构造函数的情况。 由于Python类中只能有一个初始化方法，不能按照不同的情况初始化类。
+```py
+class Book(object):
+
+    def __init__(self, title):
+        self.title = title
+
+    @classmethod
+    def create(cls, title):
+        book = cls(title=title)
+        return book
+
+book1 = Book("python")
+book2 = Book.create("python and django")
+print(book1.title)
+print(book2.title)
+```
+特别说明，静态方法也可以实现上面功能，但静态方法每次都要写上类的名字，不方便。
+
+2、类中静态方法方法调用静态方法的情况。
+下面的代码，静态方法调用另一个静态方法，如果改用类方法调用静态方法，可以让cls代替类，
+让代码看起来精简一些。也防止类名修改了，不用在类定义中修改原来的类名。
+
+
 8.Python多线程实现方式
 
-- python
-   - search和match
-   - 垃圾回收
-   - pass语句的作用
+# search和match
+均为re模块中的方法，用于正则表达式的匹配。
+
+search()方法从整个字符串中搜索第一个匹配的子串，不限制搜索的起始位置。
+match()方法从字符串的开头开始匹配，只在字符串开头找到匹配的子串。
+
+# 垃圾回收
+引用计数机制为主，标记-清除和分代回收机制为辅的策略。其中，标记-清除机制用来解决计数引用带来的循环引用而无法释放内存的问题，分代回收机制是为提升垃圾回收的效率。
+
+# pass语句的作用
+简单而言，pass 是一种空操作（null operation），解释器执行到它的时候，除了检查语法是否合法，什么也不做就直接跳过。它不会改变程序的执行顺序。它就像我们写的注释，除了占用一行代码行，不会对所处的作用域产生任何影响。
+
+## 1、对人：作为空间占位符
+我把它看作是一种言简意赅的注释方式，等于是说“这里先预留位置，回头再补上具体的代码实现”。
+
+但是，若作为一种注释方式，它就显得太单薄了，比不上写“# todo: xxxx”，后者也会被 IDE 用颜色突显，而且意思更明确。虽然写起来简单，但它也引入了一个看似多余的关键字 pass。
+
+所以，从空间占位符的角度来看，pass 不是编程语言中必须的设计要素。
+## 2、对机器：为了语法完整性
+对于前一条的用法，pass 出现在代码中的位置在理论上是不受限的。
+
+但是，我们最常使用 pass 时，基本是在冒号的下一行，而且在该层缩进的代码块中，只有这一条语句。（参见前文的 3 个例子，为了方便，我们仅以以空函数为例）
+
+如果不写它，会怎样？
+
+答案是会报缩进错误：IndentationError: expected an indented block
+
+因为 Python 使用缩进来划分代码块（至于原因，请查阅《Python为什么使用缩进来划分代码块？》），而冒号标识着要出现新的缩进代码块，所以这个例子会报缺少缩进代码块。
+
+如果我们用前文说的注释来替代，也会报错：IndentationError: expected an indented block
+
+原因是注释并非有效的语法内容，它会被 Python 解释器忽略掉（ignore），不像 pass 语句那样是“有效的语法内容，但是跳过”。
 
 
 # python区分大小写吗
 区分的。大写字母定义的变量而小写字母定义的同名变量不是同一个变量
 
-3.Python的Magic Method
-4.类中变量__name、_value的区别
-5.Dict和List查询的效率差别及原因
+# Python的Magic Method
+# 变量__name__的含义
+* name是一个变量，前后加了双下划线是因为这是系统定义的名字（python中系统变量都是双下划綫开头结尾），普通变量不使用这种命名方式；
+* python有很多模块，这些模块是可以独立运行的（这一点与C语言和C++的头文件不同）；
+* name是用来标识模块名字的一个系统变量。这里分两种情况：第一种情况指的是当前运行的模块，那么当前模块__main__ 的值就为__main__；第二种情况指的是该模块是使用import导入的模块，那么这个被导入模块的name变量的值为该模块的文件名（去掉.py）。
 
+在__name__ 变量的帮助下，你可以判断出这时代码是被直接运行，还是被导入到其他程序中去了。
+
+
+# Dict和List查询的效率差别及原因
+dict的本质就是 hash 表，hash 表就是通过 key 找到其 value ，平均情况下你只需要花费 O(1) 的时间复杂度即可以完成对一个元素的查找查询的时间
+
+而list底层是长度可变的数组，查询的时间复杂度为O(n)。
+
+# Django请求的流程
+![](https://img-blog.csdnimg.cn/img_convert/dea87717a86daefba7cb8f1aa5de6b65.png)
+
+最重要的是回答用户请求并不是一下子通过URL匹配就达到相应视图，返回数据也不是一下子就返回给用户，中间要经历层层中间件。这个面试题其实考的核心是中间件。
+# Django的中间件了解吗
+# python类的内置方法有哪些，调用顺序如何，什么作用？
+__new__ 和 __init__
+__call__
+__iter__ 和 __next__
+__del__
+__str__ 和 __repr__
+__getattr__
+__getattribute__
+# 异常捕获
+![](https://pic3.zhimg.com/80/v2-24efb932d899b530216f5192412ec61a_1440w.webp)
+## 1 捕获所有异常
+包括键盘中断和程序退出请求（用 sys.exit() 就无法退出程序了，因为异常被捕获了），因此慎用。
+```py
+try:
+    <语句>
+except:
+    print('异常说明')
+```
+
+## 2 捕获指定异常
+```py
+try:
+    <语句>
+except <异常名> as e:
+    print('异常说明')
+```
+万能异常：
+```py
+try:
+    <语句>
+except Exception as e:
+    print('异常说明')
+```
+
+## 3 捕获多个异常
+捕获多个异常有两种方式，第一种是一个 except 同时处理多个异常，不区分优先级：
+```py
+try:
+    <语句>
+except (<异常名1>, <异常名2>, ...):
+    print('异常说明')
+```
+第二种是区分优先级的：
+```py
+try:
+    <语句>
+
+except <异常名1>:
+
+    print('异常说明1')
+
+except <异常名2>:
+
+    print('异常说明2')
+
+except <异常名3>:
+
+    print('异常说明3')
+```
+该种异常处理语法的规则是：
+
+执行 try 下的语句，如果引发异常，则执行过程会跳到第一个 except 语句。
+如果第一个 except 中定义的异常与引发的异常匹配，则执行该 except 中的语句。
+如果引发的异常不匹配第一个 except，则会搜索第二个 except，允许编写的 except 数量没有限制。
+如果所有的 except 都不匹配，则异常会传递到下一个调用本代码的最高层 try 代码中。
+## 4 异常中的 else
+如果判断完没有某些异常之后还想做其他事，就可以使用下面这样的 else 语句。
+```py
+try:
+　　<语句>
+except <异常名1>:
+　　print('异常说明1')
+except <异常名2>:
+　　print('异常说明2')
+else:
+　　<语句> # try语句中没有异常则执行此段代码
+```
+## 5 异常中的 finally
+try…finally…语句无论是否发生异常都将会执行最后的代码。
+```py
+try:
+　　<语句>
+finally:
+　　<语句>
+```
+看一个示例：
+```py
+str1 = 'hello world'
+try:
+　　int(str1)
+except IndexError as e:
+　　print(e)
+except KeyError as e:
+　　print(e)
+except ValueError as e:
+　　print(e)
+else:
+　　print('try内没有异常')
+finally:
+　　print('无论异常与否,都会执行我')
+```
+## 6 raise 主动触发异常
+可以使用 raise 语句自己触发异常，raise 语法格式如下：
+```py
+raise [Exception [, args [, traceback]]]
+```
+语句中 Exception 是异常的类型（例如 ValueError），参数是一个异常参数值。该参数是可选的，如果不提供，异常的参数是 "None"。最后一个参数是跟踪异常对象，也是可选的（在实践中很少使用）。
+
+看一个例子：
+```py
+def not_zero(num):
+　　try:
+　　　　if num == 0:
+　　　　　　raise ValueError('参数错误')
+　　　　return num
+　　except Exception as e:
+　　　　print(e)
+not_zero(0)
+```
+# 垃圾回收
 python类的内置方法有哪些，调用顺序如何，什么作用？
 异常捕获
 垃圾回收
@@ -704,11 +1040,9 @@ dict.pop(key)
 
 # python线程和线程组
 
-# c，python，java的区别极其优缺点
-
 
 # python内存管理（内存池，垃圾回收机制，不了解的赶紧去查，高频）
-# python面向对象的常用方法，如__new__和__init__区别，__call__方法，__str__,以及如何调用父类（super），以及面向对象的特性，什么是面向对象
+
 
 # Python 的 list 去重
 利用set和元素在原有list中的索引排序
