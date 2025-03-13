@@ -25,3 +25,13 @@ BM25和TF-IDF
 # Page attention
 
 # 推理加速技术
+
+# 优化器
+
+# batch size
+
+# 五种并行方式
+
+# 退火
+
+# onnx
